@@ -1,0 +1,3 @@
+[
+  { "name": "ADR 0001 — Scratch Demo decision", "status": "accepted", "description": "Validate the IcePanel REST import + ADR create flow end to end.", "content": "# ADR 0001 — Scratch Demo decision\n\n## Status\nAccepted\n\n## Context\nWe need to confirm the IcePanel REST API can create landscapes, import C4 model objects + connections, and create ADRs before launching the multi-agent modeling push.\n\n## Decision\nUse the bulk import endpoint (`POST /landscapes/{id}/versions/{versionId}/import`) for objects + connections, and the ADR create endpoint for decision records.\n\n## Consequences\n- One import call per landscape handles ID resolution.\n- ADRs are created individually after import." }
+]

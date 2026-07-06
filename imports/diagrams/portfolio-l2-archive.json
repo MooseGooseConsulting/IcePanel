@@ -1,0 +1,33 @@
+{
+  "name": "LLM Conversation Archive - Containers (L2)",
+  "handleId": "portfolio-l2-archive",
+  "type": "app-diagram",
+  "modelId": "CeIoHeGfqAf89BE2ombJ",
+  "index": 5,
+  "pinned": false,
+  "description": "C4 Level 2: apps and stores inside LLM Conversation Archive.",
+  "objects": {
+    "do-sys": {
+      "id": "do-sys",
+      "modelId": "CeIoHeGfqAf89BE2ombJ",
+      "type": "system",
+      "shape": "box",
+      "x": 80,
+      "y": 200,
+      "width": 280,
+      "height": 120
+    },
+    "do-app-0": {
+      "id": "do-app-0",
+      "modelId": "aSGY2iXy7j3fgQ9Q1Hf0",
+      "type": "app",
+      "shape": "box",
+      "x": 420,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

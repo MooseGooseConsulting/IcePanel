@@ -1,0 +1,33 @@
+{
+  "name": "NorthStarGuardian - Components (L3)",
+  "handleId": "portfolio-l3-guardian",
+  "type": "component-diagram",
+  "modelId": "pFE6co2KK3HyqJgkwXzj",
+  "index": 13,
+  "pinned": false,
+  "description": "C4 Level 3: components inside NorthStarGuardian.",
+  "objects": {
+    "do-app": {
+      "id": "do-app",
+      "modelId": "pFE6co2KK3HyqJgkwXzj",
+      "type": "app",
+      "shape": "box",
+      "x": 80,
+      "y": 180,
+      "width": 240,
+      "height": 100
+    },
+    "do-comp-0": {
+      "id": "do-comp-0",
+      "modelId": "lTpvoUMdl6aPkKU6UaGO",
+      "type": "component",
+      "shape": "box",
+      "x": 380,
+      "y": 80,
+      "width": 240,
+      "height": 90
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

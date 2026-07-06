@@ -1,0 +1,33 @@
+{
+  "name": "AI Review - Components (L3)",
+  "handleId": "portfolio-l3-aireview-comp",
+  "type": "component-diagram",
+  "modelId": "2mheYeoY30HpnGBL7IKs",
+  "index": 14,
+  "pinned": false,
+  "description": "C4 Level 3: components inside AI Review.",
+  "objects": {
+    "do-app": {
+      "id": "do-app",
+      "modelId": "2mheYeoY30HpnGBL7IKs",
+      "type": "app",
+      "shape": "box",
+      "x": 80,
+      "y": 180,
+      "width": 240,
+      "height": 100
+    },
+    "do-comp-0": {
+      "id": "do-comp-0",
+      "modelId": "4K7cANUz3t3zfNM6bbrS",
+      "type": "component",
+      "shape": "box",
+      "x": 380,
+      "y": 80,
+      "width": 240,
+      "height": 90
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

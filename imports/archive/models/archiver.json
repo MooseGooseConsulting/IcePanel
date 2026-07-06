@@ -1,0 +1,963 @@
+{
+    "tagGroups":  [
+                      {
+                          "icon":  "cog",
+                          "id":  "arch-tg-status",
+                          "name":  "Status"
+                      },
+                      {
+                          "icon":  "server",
+                          "id":  "arch-tg-layer",
+                          "name":  "Layer"
+                      },
+                      {
+                          "icon":  "database",
+                          "id":  "arch-tg-container",
+                          "name":  "Container class"
+                      }
+                  ],
+    "tags":  [
+                 {
+                     "color":  "green",
+                     "groupId":  "arch-tg-status",
+                     "id":  "arch-tag-live",
+                     "name":  "live"
+                 },
+                 {
+                     "color":  "blue",
+                     "groupId":  "arch-tg-status",
+                     "id":  "arch-tag-future",
+                     "name":  "future"
+                 },
+                 {
+                     "color":  "grey",
+                     "groupId":  "arch-tg-status",
+                     "id":  "arch-tag-deprecated",
+                     "name":  "deprecated"
+                 },
+                 {
+                     "color":  "blue",
+                     "groupId":  "arch-tg-layer",
+                     "id":  "arch-tag-ingest",
+                     "name":  "ingest"
+                 },
+                 {
+                     "color":  "purple",
+                     "groupId":  "arch-tg-layer",
+                     "id":  "arch-tag-projection",
+                     "name":  "projection"
+                 },
+                 {
+                     "color":  "dark-blue",
+                     "groupId":  "arch-tg-layer",
+                     "id":  "arch-tag-storage",
+                     "name":  "storage"
+                 },
+                 {
+                     "color":  "orange",
+                     "groupId":  "arch-tg-layer",
+                     "id":  "arch-tag-external",
+                     "name":  "external"
+                 },
+                 {
+                     "color":  "green",
+                     "groupId":  "arch-tg-container",
+                     "id":  "arch-tag-jsonl",
+                     "name":  "JSONL append-only"
+                 },
+                 {
+                     "color":  "dark-blue",
+                     "groupId":  "arch-tg-container",
+                     "id":  "arch-tag-sqlite",
+                     "name":  "SQLite in-place"
+                 },
+                 {
+                     "color":  "purple",
+                     "groupId":  "arch-tg-container",
+                     "id":  "arch-tag-protobuf",
+                     "name":  "Protobuf mirror"
+                 },
+                 {
+                     "color":  "orange",
+                     "groupId":  "arch-tg-container",
+                     "id":  "arch-tag-leveldb",
+                     "name":  "LevelDB dir"
+                 }
+             ],
+    "modelObjects":  [
+                         {
+                             "id":  "arch-domain",
+                             "name":  "LLM Conversation Archive",
+                             "type":  "domain",
+                             "status":  "live",
+                             "tagIds":  [
+
+                                        ],
+                             "external":  false,
+                             "caption":  "Every LLM conversation on every fleet machine, captured and queryable",
+                             "description":  "Patrick\u0027s llm-archiver project: capture every LLM conversation across the fleet with zero operational friction. Currently a v2 greenfield rebuild; v1 ingestion is git-only. Coverage (G1) is the primary success metric; the corpus is irreplaceable (source files rotate)."
+                         },
+                         {
+                             "id":  "arch-operator",
+                             "name":  "Operator",
+                             "type":  "actor",
+                             "parentId":  "arch-domain",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live"
+                                        ],
+                             "external":  false,
+                             "caption":  "Patrick / Coldaine",
+                             "description":  "The human running the archiver CLI and approving corpus migrations. Owns the fleet and the parked canonical dump. No production writes are approved until parsers pass golden tests and clone rehearsal."
+                         },
+                         {
+                             "id":  "arch-fleet",
+                             "name":  "Fleet Machines",
+                             "type":  "actor",
+                             "parentId":  "arch-domain",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live"
+                                        ],
+                             "external":  false,
+                             "caption":  "laptop, zo, raspberryoracle, WSL2",
+                             "description":  "The set of machines running LLM tools that produce conversation artifacts. Adding a new machine must be trivial (G2 - install, configure, forget). Each machine contributes a machine_id that participates in raw-record identity so two machines never collide."
+                         },
+                         {
+                             "id":  "arch-fleet-sources",
+                             "name":  "Fleet Source Files",
+                             "type":  "system",
+                             "parentId":  "arch-domain",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-external"
+                                        ],
+                             "external":  true,
+                             "caption":  "JSONL / SQLite / .pb / LevelDB on each machine",
+                             "description":  "Conversation artifacts written by LLM tools (Claude Code, Codex, OpenCode, VS Code Copilot, Cursor, Gemini, Kilo, Kimi, Qwen, Copilot CLI, Goose) on fleet machines. Owned by the tools, not the archiver. Append-only JSONL, in-place SQLite (opencode.db, state.vscdb), cloud-mirror protobuf (.pb), and LevelDB dirs."
+                         },
+                         {
+                             "id":  "arch-system",
+                             "name":  "llm-archiver v2",
+                             "type":  "system",
+                             "parentId":  "arch-domain",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live"
+                                        ],
+                             "external":  false,
+                             "caption":  "greenfield rebuild",
+                             "description":  "The v2 greenfield ingestion stack. V1 (parsers, pipeline, storage, schema) is git-only at tag legacy-v1-file-parser-freeze-2026-08 and branch archive/v1-file-parser. Only --discover is wired today; ingest, schema init, doctor, and daemon exit until v2 parsers land."
+                         },
+                         {
+                             "id":  "arch-cli",
+                             "name":  "CLI (uv run llm-archiver)",
+                             "type":  "app",
+                             "parentId":  "arch-system",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "entry point",
+                             "description":  "Greenfield v2 command-line entry point (src/llm_chat_parser/cli.py). --discover is the only wired mode; --process, --init-db, --doctor, and --daemon are stubbed and exit with a not-wired message."
+                         },
+                         {
+                             "id":  "arch-app-ingest",
+                             "name":  "Ingestion \u0026 Parsers",
+                             "type":  "app",
+                             "parentId":  "arch-system",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "discovery + per-tool parsers",
+                             "description":  "Grouping app: the live discovery/contracts/taxonomy/registry components and the per-tool parsers. Components live here because IcePanel requires components to parent an app or store."
+                         },
+                         {
+                             "id":  "arch-app-raw",
+                             "name":  "Raw Layer \u0026 Projections",
+                             "type":  "app",
+                             "parentId":  "arch-system",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-storage"
+                                        ],
+                             "external":  false,
+                             "caption":  "planned v2 raw + projection components",
+                             "description":  "Grouping app: the 7 planned v2 components (raw records, projections, native-id, cursors, row-hash, reconciliation, subagent modeling)."
+                         },
+                         {
+                             "id":  "arch-cli-discover",
+                             "name":  "--discover command",
+                             "type":  "component",
+                             "parentId":  "arch-cli",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "live, read-only",
+                             "description":  "Lists discovered source files and emits them as JSON or text. Performs no DB writes. Instantiates the ToolRegistry, calls discover_sources, and prints (tool, parser, path, path_hash)."
+                         },
+                         {
+                             "id":  "arch-discovery",
+                             "name":  "Discovery scanner",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "ingestion_v2/discover.py",
+                             "description":  "Expands per-tool globs from the registry, applies a 100MB size cap (sqlite_opencode is exempt - the 508MB in-place giant is never skipped), dedupes by (tool, parser, resolved path), and yields DiscoveredSource(tool, parser, path) with a sha256 path_hash."
+                         },
+                         {
+                             "id":  "arch-contracts",
+                             "name":  "V2 ingestion contracts",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "ingestion_v2/contracts.py",
+                             "description":  "TypedDicts that define the boundary between parsers and the raw layer: SourceArtifact (tool, machine_id, source_artifact_id, stream_role, projection_policy, parser_version) and RawRecord (native_id, record_kind, position, source_artifact_id, stream_role, payload, row_hash)."
+                         },
+                         {
+                             "id":  "arch-stream-taxonomy",
+                             "name":  "Stream taxonomy (G-0)",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "ingestion_v2/stream_taxonomy.py",
+                             "description":  "Classifies artifacts into a StreamRole (conversation_transcript, subagent_transcript, ui_event, wire_event, event_log, session_index, state_db, attachment_or_tool_stream, unknown) and a ProjectionPolicy. Only conversation_transcript and subagent_transcript may create projected messages (G-0 gate from ADR 0002)."
+                         },
+                         {
+                             "id":  "arch-tool-registry",
+                             "name":  "Tool registry",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "tool_registry.py + tools/*.yaml",
+                             "description":  "Loads per-tool and family YAML definitions (tools/*.yaml, tools/families/*.yaml), resolves platform-specific paths (%APPDATA%, ~, etc.), and produces ToolDefinition(tool_id, parser, globs, stitches). Replaces the monolithic config.yaml discovery.sources section."
+                         },
+                         {
+                             "id":  "arch-parser-codex",
+                             "name":  "Codex parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-jsonl"
+                                        ],
+                             "external":  false,
+                             "caption":  "priority 1 - JSONL",
+                             "description":  "Per-tool parser for Codex rollout JSONL (~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl). Interleaves response_item (conversation_transcript) and event_msg (event_log). history.jsonl is a session_index, not a transcript. Native id present ~99.7% in corpus but positional fallback needed. Forces positional+hash design."
+                         },
+                         {
+                             "id":  "arch-parser-claude-code",
+                             "name":  "Claude Code parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-jsonl"
+                                        ],
+                             "external":  false,
+                             "caption":  "priority 2 - JSONL + subagents",
+                             "description":  "Per-tool parser for Claude Code (~/.claude/projects/*/*.jsonl, history.jsonl, and subagents/agent-*.jsonl). High churn (94%). Must model subagent transcripts as child runs (#111), not splice them into parent sequence slots. Native uuid present on newer rows (T2 partial)."
+                         },
+                         {
+                             "id":  "arch-parser-opencode",
+                             "name":  "OpenCode parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-sqlite"
+                                        ],
+                             "external":  false,
+                             "caption":  "priority 3 - SQLite in-place giant",
+                             "description":  "Per-tool parser for opencode.db (508MB, rewritten in place, size-cap exempt). Native message.id is 0.0% null and 100% distinct but was discarded by v1\u0027s positional upsert. Highest-value single target: native id + composite (time_updated, native id) cursor with overlap-window rescan."
+                         },
+                         {
+                             "id":  "arch-parser-kilo",
+                             "name":  "Kilo Code parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-jsonl"
+                                        ],
+                             "external":  false,
+                             "caption":  "JSON, N-\u003e1 composition",
+                             "description":  "Per-tool parser for Kilo Code (api_conversation_history.json + ui_messages.json per task). API file is conversation_transcript; UI file is ui_event (enrich_projection_only). One message is composed from multiple source rows (N-\u003e1), tracked via message_raw_records lineage."
+                         },
+                         {
+                             "id":  "arch-parser-kimi",
+                             "name":  "Kimi CLI parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-jsonl"
+                                        ],
+                             "external":  false,
+                             "caption":  "context + wire, cold 2.4GB",
+                             "description":  "Per-tool parser for Kimi (context.jsonl transcript + wire.jsonl wire_event, retain-raw-only). 2.4GB but 0% churn (cold) - explicitly not a day-one target. Native id ~99.7% present in corpus."
+                         },
+                         {
+                             "id":  "arch-parser-qwen",
+                             "name":  "Qwen parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-jsonl"
+                                        ],
+                             "external":  false,
+                             "caption":  "JSON, T1 native id",
+                             "description":  "Per-tool parser for Qwen (~/.qwen/tmp/*/chats/*.json). Native id present and unique (T1 - have it, use it). 0% session churn in corpus; identity fix is a schema/upsert change, not a parser change."
+                         },
+                         {
+                             "id":  "arch-parser-gemini",
+                             "name":  "Gemini parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-protobuf"
+                                        ],
+                             "external":  false,
+                             "caption":  ".pb cloud mirror + .json native",
+                             "description":  "Per-tool parser for Gemini. Antigravity .pb files are cloud-sync mirrors rewritten in place (worst change-model fit, no native id, path-derived session id breaks on mirror rebuild). gemini.json side carries native ids. Per-file content hash + reconciliation is the only honest option."
+                         },
+                         {
+                             "id":  "arch-parser-copilot-cli",
+                             "name":  "Copilot CLI parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-jsonl"
+                                        ],
+                             "external":  false,
+                             "caption":  "events.jsonl + session.db",
+                             "description":  "Per-tool parser for GitHub Copilot CLI (~/.copilot/session-state/{uuid}/). v1 ingested events.jsonl only; v2 classifies lifecycle vs message events and treats session.db as state_db (retain-raw-only). Native id partial (T2)."
+                         },
+                         {
+                             "id":  "arch-parser-vscode-family",
+                             "name":  "VS Code family parser",
+                             "type":  "component",
+                             "parentId":  "arch-app-ingest",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest",
+                                            "arch-tag-sqlite"
+                                        ],
+                             "external":  false,
+                             "caption":  "vscdb + chatSessions jsonl deltas",
+                             "description":  "Per-tool parser for VS Code Copilot, Insiders, Cursor, Windsurf, Antigravity (sqlite_vscode + vscode_reconstructor). Three tiers: T1 chatSessions/*.jsonl (hybrid_delta replay), T2 ItemTable memento (positional, NOW() bug), T3 Cursor aiService.generations. external_id 100% null in v1."
+                         },
+                         {
+                             "id":  "arch-raw-records",
+                             "name":  "Parser-native raw records",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-storage"
+                                        ],
+                             "external":  false,
+                             "caption":  "raw layer - system of record",
+                             "description":  "Planned component 1: persist the smallest stable native record each tool exposes (OpenCode session/message/part, JSONL events, VS Code state deltas), captured BEFORE any lossy normalization (pre-merge, pre-dedup). Two tables: raw_record_keys (stable identity, one row forever) and raw_record_revisions (immutable, append-only, row_hashed content history). Replaces v1\u0027s lossy jsonl_parser.py:412 dedup-drop."
+                         },
+                         {
+                             "id":  "arch-projections",
+                             "name":  "Rebuilt projections",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-projection"
+                                        ],
+                             "external":  false,
+                             "caption":  "chat_sessions + messages, derived",
+                             "description":  "Planned component 2: chat_sessions and messages become projections rebuilt deterministically from the raw layer, not the primary store. A rebuild is idempotent (zero spurious rows) and is exactly what reconciliation runs. messages.raw_record_key_id binds each projected row to its raw identity so messages.id (and embeddings) never re-attach to a different record (F1)."
+                         },
+                         {
+                             "id":  "arch-native-id",
+                             "name":  "Native-id identity",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "3 tiers: T1 use it, T2 partial, T3 synthesize",
+                             "description":  "Planned component 3: message identity anchored to native source-local ids where present, with explicit (source_artifact, position)+row-hash fallback where absent. T1 (opencode, gemini.json, qwen) just use it; T2 (claude_code, copilot_cli) partial; T3 (codex, kimi, kilo, cursor, vscode, protobuf) parser synthesizes a stable key. machine_id is in the identity key so two fleet machines never collide."
+                         },
+                         {
+                             "id":  "arch-cursors",
+                             "name":  "Per-source cursors",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "source_cursor, per (machine, artifact)",
+                             "description":  "Planned component 4: native high-water marks per (machine_id, source_artifact_id) in source_cursor. byte_offset+line_no for append-only JSONL; composite (max_time_updated, native id tie-break) + overlap-window rescan for in-place SQLite; none for protobuf/LevelDB. parser_version mismatch invalidates the cursor and forces a full reparse + reconcile."
+                         },
+                         {
+                             "id":  "arch-row-hash",
+                             "name":  "Row-hash / revision tracking",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-storage"
+                                        ],
+                             "external":  false,
+                             "caption":  "raw_record_revisions.row_hash",
+                             "description":  "Planned component 5: per-record SHA-256 content hash on raw_record_revisions to catch in-place edits below the cursor that a high-water mark alone never revisits. A changed row_hash inserts a new immutable revision and stamps the prior one superseded_at. A deliberate, scoped reversal of v1\u0027s no-content-hash stance."
+                         },
+                         {
+                             "id":  "arch-reconciliation",
+                             "name":  "Reconciliation (self-healing)",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-ingest"
+                                        ],
+                             "external":  false,
+                             "caption":  "scheduled full reparse backstop",
+                             "description":  "Planned component 6: scheduled full reparse per container as the self-healing backstop and the only detector for arbitrary below-cursor edits (bounded staleness \u003c= reconcile cadence). Full replay is amortized from every-run to every-Nth-run, not eliminated. Per-artifact advisory lock prevents racing a live incremental run; can flip audit_status suspect -\u003e reingested."
+                         },
+                         {
+                             "id":  "arch-subagent-model",
+                             "name":  "Subagent / child-run modeling",
+                             "type":  "component",
+                             "parentId":  "arch-app-raw",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-projection"
+                                        ],
+                             "external":  false,
+                             "caption":  "run_relationships (#111, #93)",
+                             "description":  "Planned component 7: first-class child runs. Claude subagent transcripts project to their own chat_sessions row (child id \u003cparent\u003e:subagent:\u003cagentId\u003e) with run_relationships edges (relationship_type=subagent). OpenCode task-\u003echild-session edges (task_child) use native ids. Stitching is path+time, not time-only (#93): native id \u003e source artifact \u003e project path."
+                         },
+                         {
+                             "id":  "arch-source-artifacts",
+                             "name":  "Source Artifacts on Disk",
+                             "type":  "store",
+                             "parentId":  "arch-system",
+                             "status":  "live",
+                             "tagIds":  [
+                                            "arch-tag-live",
+                                            "arch-tag-storage"
+                                        ],
+                             "external":  false,
+                             "caption":  "per fleet machine, cursored",
+                             "description":  "The archiver\u0027s discovered view of fleet source files, keyed by machine-scoped source_artifact_id (local:\u003cmachine_id\u003e:\u003cpath_hash\u003e). Append-only JSONL, in-place SQLite, cloud-mirror .pb, LevelDB dirs. source_file_state (whole-file fingerprint) stays as a cold-file fast-path hint; cursors will demote it from the correctness gate."
+                         },
+                         {
+                             "id":  "arch-postgres-corpus",
+                             "name":  "Postgres Corpus",
+                             "type":  "store",
+                             "parentId":  "arch-system",
+                             "status":  "future",
+                             "tagIds":  [
+                                            "arch-tag-future",
+                                            "arch-tag-storage"
+                                        ],
+                             "external":  false,
+                             "caption":  "raw layer + chat projections",
+                             "description":  "Planned Postgres corpus: raw layer (raw_record_keys, raw_record_revisions, message_raw_records, source_cursor, run_relationships) plus derived chat projections (chat_sessions, messages). Migrations 010-017 are additive and idempotent; cutover is shadow -\u003e fidelity-tagged backfill -\u003e flip, gated on content + identity-map diffs. Downstream consumers (messages.id, embeddings, content_tsvector, cwd) must keep working."
+                         },
+                         {
+                             "id":  "arch-canonical-dump",
+                             "name":  "Canonical Corpus Dump",
+                             "type":  "store",
+                             "parentId":  "arch-system",
+                             "status":  "deprecated",
+                             "tagIds":  [
+                                            "arch-tag-deprecated",
+                                            "arch-tag-storage"
+                                        ],
+                             "external":  false,
+                             "caption":  "parked, hands-off - 2.49GB pg_dump",
+                             "description":  "Frozen v1 corpus snapshot: D:\\llm-archiver-archive\\llm_archival_20260608_020001.sql.gz (~2.49GB, pg_dump plain SQL gzip, integrity verified 2026-06-08). PARKED and hands-off: no pg_restore, no migration apply, no ingest against the live corpus URI until v2 parsers pass golden tests and clone rehearsal. Restored to a throwaway clone only."
+                         }
+                     ],
+    "modelConnections":  [
+                             {
+                                 "id":  "arch-conn-01",
+                                 "name":  "runs uv run llm-archiver",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-operator",
+                                 "targetId":  "arch-cli",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-02",
+                                 "name":  "dispatches --discover mode",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-cli",
+                                 "targetId":  "arch-cli-discover",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-03",
+                                 "name":  "loads per-tool YAMLs",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-cli-discover",
+                                 "targetId":  "arch-tool-registry",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-04",
+                                 "name":  "calls discover_sources()",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-cli-discover",
+                                 "targetId":  "arch-discovery",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-05",
+                                 "name":  "provides globs + parser + stitches",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-tool-registry",
+                                 "targetId":  "arch-discovery",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-06",
+                                 "name":  "writes LLM sessions (JSONL/SQLite/.pb/LevelDB)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-fleet",
+                                 "targetId":  "arch-fleet-sources",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-07",
+                                 "name":  "expands tool globs, reads file metadata",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-fleet-sources",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-08",
+                                 "name":  "registers DiscoveredSource (path_hash, 100MB cap, opencode exempt)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-source-artifacts",
+                                 "tagIds":  [
+                                                "arch-tag-live"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-09",
+                                 "name":  "feeds DiscoveredSource (priority 1)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-codex",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-10",
+                                 "name":  "feeds DiscoveredSource (priority 2)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-claude-code",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-11",
+                                 "name":  "feeds DiscoveredSource (priority 3, size-cap exempt)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-opencode",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-12",
+                                 "name":  "feeds DiscoveredSource",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-kilo",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-13",
+                                 "name":  "feeds DiscoveredSource (cold, 2.4GB)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-kimi",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-14",
+                                 "name":  "feeds DiscoveredSource",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-qwen",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-15",
+                                 "name":  "feeds DiscoveredSource (.pb cloud mirror)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-gemini",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-16",
+                                 "name":  "feeds DiscoveredSource",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-copilot-cli",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-17",
+                                 "name":  "feeds DiscoveredSource",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-discovery",
+                                 "targetId":  "arch-parser-vscode-family",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-18",
+                                 "name":  "emits RawRecord (response_item; native id ~99.7%)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-codex",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-19",
+                                 "name":  "emits RawRecord + subagent transcripts",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-claude-code",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-20",
+                                 "name":  "emits RawRecord (session/message/part; native id 0% null)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-opencode",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-21",
+                                 "name":  "emits RawRecord (api + ui, N-\u003e1)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-kilo",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-22",
+                                 "name":  "emits RawRecord (context transcript; wire raw-only)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-kimi",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-23",
+                                 "name":  "emits RawRecord (native id)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-qwen",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-24",
+                                 "name":  "emits RawRecord (.pb 2 synth msgs; .json native)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-gemini",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-25",
+                                 "name":  "emits RawRecord (events.jsonl)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-copilot-cli",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-26",
+                                 "name":  "emits RawRecord (vscdb + chatSessions deltas)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-parser-vscode-family",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-27",
+                                 "name":  "defines RawRecord + SourceArtifact TypedDicts",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-contracts",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-28",
+                                 "name":  "gates may_create_projected_message (G-0: transcript + subagent only)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-stream-taxonomy",
+                                 "targetId":  "arch-projections",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-29",
+                                 "name":  "identity key: native_id else (artifact, position, row_hash); 3 tiers",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-native-id",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-30",
+                                 "name":  "row_hash on raw_record_revisions (immutable, append-only)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-row-hash",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-31",
+                                 "name":  "messages.raw_record_key_id binds projection row to raw identity (F1)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-native-id",
+                                 "targetId":  "arch-projections",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-32",
+                                 "name":  "rebuilt deterministically from current raw revision",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-raw-records",
+                                 "targetId":  "arch-projections",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-33",
+                                 "name":  "raw_record_keys + raw_record_revisions + message_raw_records",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-raw-records",
+                                 "targetId":  "arch-postgres-corpus",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-34",
+                                 "name":  "chat_sessions + messages (FK-stable, embeddings preserved)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-projections",
+                                 "targetId":  "arch-postgres-corpus",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-35",
+                                 "name":  "high-water mark per (machine_id, source_artifact_id)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-cursors",
+                                 "targetId":  "arch-source-artifacts",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-36",
+                                 "name":  "byte offset / rowid / time_updated gates tail reads",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-cursors",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-37",
+                                 "name":  "compares row-hashes to detect below-cursor edits",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-reconciliation",
+                                 "targetId":  "arch-row-hash",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-38",
+                                 "name":  "full reparse, fidelity=source_reconcile",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-reconciliation",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-39",
+                                 "name":  "rebuilds projection, heals suspect rows (audit_status -\u003e reingested)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-reconciliation",
+                                 "targetId":  "arch-projections",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-40",
+                                 "name":  "run_relationships parent/child edges (#111)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-subagent-model",
+                                 "targetId":  "arch-projections",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-41",
+                                 "name":  "subagent_transcript source_kind on raw records",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-subagent-model",
+                                 "targetId":  "arch-raw-records",
+                                 "tagIds":  [
+                                                "arch-tag-future"
+                                            ]
+                             },
+                             {
+                                 "id":  "arch-conn-42",
+                                 "name":  "pg_restore to throwaway clone for rehearsal (prod hands-off)",
+                                 "direction":  "outgoing",
+                                 "originId":  "arch-canonical-dump",
+                                 "targetId":  "arch-postgres-corpus",
+                                 "tagIds":  [
+                                                "arch-tag-deprecated"
+                                            ]
+                             }
+                         ]
+}

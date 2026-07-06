@@ -1,0 +1,627 @@
+{
+  "tagGroups": [
+    { "icon": "network-wired", "id": "cs-tg-provider", "name": "Provider" },
+    { "icon": "star", "id": "cs-tg-status", "name": "Status" }
+  ],
+  "tags": [
+    { "color": "blue", "groupId": "cs-tg-provider", "id": "cs-tag-tavily", "name": "Tavily" },
+    { "color": "orange", "groupId": "cs-tg-provider", "id": "cs-tag-brave", "name": "Brave" },
+    { "color": "purple", "groupId": "cs-tg-provider", "id": "cs-tag-exa", "name": "Exa" },
+    { "color": "green", "groupId": "cs-tg-provider", "id": "cs-tag-serper", "name": "Serper" },
+    { "color": "yellow", "groupId": "cs-tg-provider", "id": "cs-tag-jina", "name": "Jina" },
+    { "color": "red", "groupId": "cs-tg-provider", "id": "cs-tag-firecrawl", "name": "Firecrawl" },
+    { "color": "dark-blue", "groupId": "cs-tg-provider", "id": "cs-tag-searxng", "name": "SearXNG" },
+    { "color": "pink", "groupId": "cs-tg-provider", "id": "cs-tag-llm", "name": "OpenAI-compatible LLM" },
+    { "color": "beaver", "groupId": "cs-tg-provider", "id": "cs-tag-secrets", "name": "Doppler / Secrets" },
+    { "color": "green", "groupId": "cs-tg-status", "id": "cs-tag-live", "name": "Live" },
+    { "color": "grey", "groupId": "cs-tg-status", "id": "cs-tag-future", "name": "Future" }
+  ],
+  "modelObjects": [
+    {
+      "id": "cs-domain",
+      "name": "ColdSearch Runtime",
+      "type": "domain",
+      "status": "live",
+      "tagIds": [],
+      "description": "ColdSearch: a unified, config-driven CLI runtime that fans web search, extraction, and crawl work across overlapping provider APIs with RRF reranking, a read-through cache, JSONL audit logging, and an OpenAI-compatible ReAct agent."
+    },
+    {
+      "id": "cs-user-agent",
+      "name": "User / Agent",
+      "type": "actor",
+      "parentId": "cs-domain",
+      "status": "live",
+      "tagIds": [],
+      "caption": "Operator or AI agent",
+      "description": "Operator or AI agent driving the coldsearch CLI (usearch alias). Issues search/extract/crawl/agent/tool commands and reads JSON or pretty human output."
+    },
+    {
+      "id": "cs-system",
+      "name": "ColdSearch Core",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "Interface-agnostic runtime",
+      "description": "ColdSearch Core: the interface-agnostic runtime. CLI is the current entrypoint; service/API/MCP wrappers and a daemon are planned against the same core without duplicating provider logic."
+    },
+    {
+      "id": "cs-cli",
+      "name": "CLI",
+      "type": "app",
+      "parentId": "cs-system",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "src/cli.ts - command surface",
+      "description": "src/cli.ts - the operator-facing command surface. Commands: search, extract, crawl, agent, status, and tool list/info/call. Emits JSON or pretty human output. Supports --dry-run execution plans and --no-cache.",
+      "labels": { "entrypoint": "src/cli.ts", "commands": "search|extract|crawl|agent|status|tool", "alias": "usearch" }
+    },
+    {
+      "id": "cs-runtime",
+      "name": "Execution Core",
+      "type": "app",
+      "parentId": "cs-system",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "In-process runtime",
+      "description": "Execution Core: in-process runtime that loads config, runs fanout + RRF, owns the read-through cache, the ReAct agent, the provider-tool profile registry, and the networked tool-call substrate. LocalExecutionBackend is the seam for future remote backends."
+    },
+    {
+      "id": "cs-adapters",
+      "name": "Provider Adapters",
+      "type": "app",
+      "parentId": "cs-system",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "One module per vendor",
+      "description": "Provider Adapters: one module per vendor normalizing provider-native responses to ColdSearch shared schemas (NormalizedResult, ExtractResult, CrawlResult). Created via the provider registry in src/providers.ts."
+    },
+    {
+      "id": "cs-future-entrypoints",
+      "name": "Planned Entrypoints",
+      "type": "app",
+      "parentId": "cs-system",
+      "status": "future",
+      "tagIds": ["cs-tag-future"],
+      "caption": "Thin wrappers over the core",
+      "description": "Planned Entrypoints: thin wrappers over the same ColdSearch core so provider logic is not duplicated. Not yet implemented; the remote/hybrid worker itself is Deferred."
+    },
+    {
+      "id": "cs-local-backend",
+      "name": "LocalExecutionBackend",
+      "type": "component",
+      "parentId": "cs-runtime",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "The local execution seam",
+      "description": "LocalExecutionBackend (src/execution/backend.ts) - the only implemented backend. Owns in-process search/extract/crawl, wraps the FanoutEngine, and applies the read-through cache (search/extract only; default provider pool only). The seam for future hybrid/remote backends.",
+      "labels": { "file": "src/execution/backend.ts", "cache": "search+extract only", "interface": "ExecutionBackend" }
+    },
+    {
+      "id": "cs-fanout-rrf",
+      "name": "Fanout + RRF Merge",
+      "type": "component",
+      "parentId": "cs-runtime",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "Parallel dispatch + rerank",
+      "description": "FanoutEngine + RRF reranker (src/engine/fanout.ts, src/engine/reranker.ts). Dispatches the query to every provider in the capability pool in parallel (Promise.allSettled) with per-provider error isolation, then merges via Reciprocal Rank Fusion (k=60). Also handles sequential extract/crawl failover. Owns the KeyPoolManager and UsageLogger.",
+      "labels": { "dispatch": "Promise.allSettled", "rrfK": "60", "strategies": "rrf|score|none", "keyRefs": "doppler:|env:" }
+    },
+    {
+      "id": "cs-profile-registry",
+      "name": "Provider-Tool Profile Registry",
+      "type": "component",
+      "parentId": "cs-runtime",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "Native tool profiles + routing",
+      "description": "Provider-tool profile registry (src/registry/tool-profiles.ts). Per provider-native tool: native params, common-view mappings (semanticFit direct/partial/derived), feature predicates, execution mode, output envelope, and wiring status (wired/available/deferred). Powers requirement-aware routing and the coldsearch tool list/info surface. Two registries kept in sync by a drift test.",
+      "labels": { "file": "src/registry/tool-profiles.ts", "statuses": "wired|available|deferred", "driftTest": "yes" }
+    },
+    {
+      "id": "cs-react-agent",
+      "name": "ReAct Agent",
+      "type": "component",
+      "parentId": "cs-runtime",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "Multi-step research loop",
+      "description": "ReAct search agent (src/agent/agent.ts). Multi-step research loop with structured JSON tool payloads (search/fetch/refine), max-steps guardrail, and forced synthesis on exhaustion. Uses an OpenAI-compatible LLM only (openai/groq/openrouter/cerebras/xai); never calls Anthropic. Agent fetch is SSRF-validated with DNS-rebinding-resistant address pinning (ADR 004).",
+      "labels": { "file": "src/agent/agent.ts", "loop": "ReAct", "llm": "OpenAI-compatible only", "tools": "search|fetch|refine" }
+    },
+    {
+      "id": "cs-tool-substrate",
+      "name": "Tool Call Substrate",
+      "type": "component",
+      "parentId": "cs-runtime",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "Networked tool call executor",
+      "description": "Tool call substrate (src/tools/substrate.ts). Networked `coldsearch tool call <provider>.<tool>` execution over the profile registry. Validates provider + tool id, enforces HARD_EXCLUDED_TOOLS (e.g. firecrawl.agent), resolves keys, builds per-provider HTTP requests, returns raw + summary, and logs usage. Preserves raw provider detail (no lossy normalization).",
+      "labels": { "file": "src/tools/substrate.ts", "exclusions": "firecrawl.agent", "output": "raw + summary" }
+    },
+    {
+      "id": "cs-adapter-tavily",
+      "name": "Tavily Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-tavily"],
+      "caption": "search + extract + crawl",
+      "description": "Tavily adapter - search, extract, crawl backed by POST /search, /extract, /crawl. Supports answer synthesis and raw content options."
+    },
+    {
+      "id": "cs-adapter-brave",
+      "name": "Brave Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-brave"],
+      "caption": "web search (SERP)",
+      "description": "Brave adapter - web search (GET /res/v1/web/search). SERP-style with freshness and goggles; no native domain filter (lossy mapping)."
+    },
+    {
+      "id": "cs-adapter-exa",
+      "name": "Exa Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-exa"],
+      "caption": "search + extract + crawl",
+      "description": "Exa adapter - search, extract, and synthesized crawl via POST /search, /contents, /findSimilar. Neural/keyword search with a type knob spanning instant to deep-reasoning."
+    },
+    {
+      "id": "cs-adapter-serper",
+      "name": "Serper Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-serper"],
+      "caption": "Google SERP search",
+      "description": "Serper adapter - Google SERP search (POST /search). Search-only vendor surface in ColdSearch today."
+    },
+    {
+      "id": "cs-adapter-jina",
+      "name": "Jina Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-jina"],
+      "caption": "keyless reader extract",
+      "description": "Jina adapter - keyless Reader extraction (GET r.jina.ai/<url>) producing clean text/markdown."
+    },
+    {
+      "id": "cs-adapter-firecrawl",
+      "name": "Firecrawl Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-firecrawl"],
+      "caption": "search + scrape + crawl",
+      "description": "Firecrawl adapter - search, scrape (backs ColdSearch extract), and crawl (async job). Note: Firecrawl native extract is a different structured-LLM tool, not ColdSearch extract."
+    },
+    {
+      "id": "cs-adapter-searxng",
+      "name": "SearXNG Adapter",
+      "type": "component",
+      "parentId": "cs-adapters",
+      "status": "live",
+      "tagIds": ["cs-tag-live", "cs-tag-searxng"],
+      "caption": "self-hosted metasearch",
+      "description": "SearXNG adapter - self-hosted metasearch (GET <baseUrl>/search). Operator-configured baseUrl; keyless."
+    },
+    {
+      "id": "cs-future-api",
+      "name": "HTTP API Wrapper",
+      "type": "component",
+      "parentId": "cs-future-entrypoints",
+      "status": "future",
+      "tagIds": ["cs-tag-future"],
+      "caption": "planned remote entrypoint",
+      "description": "HTTP API wrapper (planned) - exposes the same core over HTTP so remote clients can submit search/extract/crawl/agent jobs."
+    },
+    {
+      "id": "cs-future-mcp",
+      "name": "MCP Server Wrapper",
+      "type": "component",
+      "parentId": "cs-future-entrypoints",
+      "status": "future",
+      "tagIds": ["cs-tag-future"],
+      "caption": "planned MCP entrypoint",
+      "description": "MCP server wrapper (planned) - exposes ColdSearch tools to MCP clients without duplicating provider logic."
+    },
+    {
+      "id": "cs-future-daemon",
+      "name": "Daemon / Service",
+      "type": "component",
+      "parentId": "cs-future-entrypoints",
+      "status": "future",
+      "tagIds": ["cs-tag-future"],
+      "caption": "planned async job host",
+      "description": "Daemon / service (planned) - hosts long-running and async agentic jobs, centralized secrets, retries, and job state. The full remote/hybrid worker is currently Deferred."
+    },
+    {
+      "id": "cs-store-config",
+      "name": "config.toml",
+      "type": "store",
+      "parentId": "cs-system",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "TOML config (config over code)",
+      "description": "config.toml at ~/.config/coldsearch/config.toml (legacy fallback ~/.config/usearch/config.toml). Holds capability provider pools + strategy, per-provider key pools (doppler:/env: refs), cache policy, and the usage log path. Config over code is a core invariant.",
+      "labels": { "path": "~/.config/coldsearch/config.toml", "fallback": "~/.config/usearch/config.toml", "format": "TOML" }
+    },
+    {
+      "id": "cs-store-cache",
+      "name": "Read-through File Cache",
+      "type": "store",
+      "parentId": "cs-system",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "search/extract result cache",
+      "description": "Read-through file cache (~/.config/coldsearch/cache). One JSON file per entry; lazy expiry on get. search_ttl 6h, extract_ttl 24h. Applies only to the default provider pool; --providers/--single-provider and crawl bypass it. Best-effort: a cache failure never breaks a request.",
+      "labels": { "path": "~/.config/coldsearch/cache", "searchTtl": "6h", "extractTtl": "24h", "crawl": "not cached" }
+    },
+    {
+      "id": "cs-store-audit",
+      "name": "JSONL Usage / Audit Log",
+      "type": "store",
+      "parentId": "cs-system",
+      "status": "live",
+      "tagIds": ["cs-tag-live"],
+      "caption": "append-only audit surface",
+      "description": "JSONL usage/audit log (~/.config/coldsearch/usage.jsonl). One line per provider/tool call: timestamp, provider, capability/tool, safe key ref (never the key value), success, response_time_ms, and error. Powers coldsearch status and the audit-first pillar.",
+      "labels": { "path": "~/.config/coldsearch/usage.jsonl", "format": "JSONL", "keyLogging": "safe ref only" }
+    },
+    {
+      "id": "cs-ext-tavily",
+      "name": "Tavily API",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-tavily"],
+      "caption": "external search/extract/crawl",
+      "description": "Tavily API (external) - web search, extract, crawl, plus answer/research surfaces. Paid, key-required."
+    },
+    {
+      "id": "cs-ext-brave",
+      "name": "Brave Search API",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-brave"],
+      "caption": "external web search",
+      "description": "Brave Search API (external) - web search plus LLM context. Paid, key-required."
+    },
+    {
+      "id": "cs-ext-exa",
+      "name": "Exa API",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-exa"],
+      "caption": "external neural search",
+      "description": "Exa API (external) - neural search, contents, findSimilar, and answer. Paid, key-required."
+    },
+    {
+      "id": "cs-ext-serper",
+      "name": "Serper API",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-serper"],
+      "caption": "external Google SERP",
+      "description": "Serper API (external) - Google SERP search. Paid, key-required."
+    },
+    {
+      "id": "cs-ext-jina",
+      "name": "Jina Reader API",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-jina"],
+      "caption": "external keyless reader",
+      "description": "Jina Reader API (external) - keyless URL-to-clean-text extraction at r.jina.ai."
+    },
+    {
+      "id": "cs-ext-firecrawl",
+      "name": "Firecrawl API",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-firecrawl"],
+      "caption": "external scrape/crawl",
+      "description": "Firecrawl API (external) - search, scrape, crawl (async job), map, and structured extract. Paid, key-required."
+    },
+    {
+      "id": "cs-ext-searxng",
+      "name": "SearXNG Instance",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-searxng"],
+      "caption": "external self-hosted metasearch",
+      "description": "SearXNG instance (external, self-hosted) - operator-managed metasearch at a configured baseUrl. Keyless; not assumed to be localhost."
+    },
+    {
+      "id": "cs-ext-llm",
+      "name": "OpenAI-compatible LLM",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-llm"],
+      "caption": "external chat completions",
+      "description": "OpenAI-compatible LLM endpoint (external) - /chat/completions. One of OpenAI, Groq, OpenRouter, Cerebras, or xAI. The Anthropic API is intentionally never used.",
+      "labels": { "providers": "openai|groq|openrouter|cerebras|xai", "anthropic": "not used", "endpoint": "/chat/completions" }
+    },
+    {
+      "id": "cs-ext-doppler",
+      "name": "Doppler",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live", "cs-tag-secrets"],
+      "caption": "external secret injection",
+      "description": "Doppler (external) - secret injection. doppler: key refs are resolved via the Doppler CLI (doppler secrets get NAME --plain), cached in-process for 5m with in-flight coalescing. Also used as `doppler run --` for whole-process env injection."
+    },
+    {
+      "id": "cs-ext-web",
+      "name": "Public Web",
+      "type": "system",
+      "parentId": "cs-domain",
+      "status": "live",
+      "external": true,
+      "tagIds": ["cs-tag-live"],
+      "caption": "agent fetch targets",
+      "description": "Public web (external) - direct fetch targets for the ReAct agent fetch tool. Validated against an SSRF deny list (private, loopback, link-local, cloud metadata) with DNS-rebinding-resistant IP pinning; redirects are not followed."
+    }
+  ],
+  "modelConnections": [
+    {
+      "id": "cs-conn-1",
+      "name": "runs coldsearch commands",
+      "direction": "outgoing",
+      "originId": "cs-user-agent",
+      "targetId": "cs-cli",
+      "description": "search/extract/crawl/agent/tool/status via the coldsearch (or usearch) CLI."
+    },
+    {
+      "id": "cs-conn-2",
+      "name": "loads config.toml",
+      "direction": "outgoing",
+      "originId": "cs-cli",
+      "targetId": "cs-store-config",
+      "description": "loadConfig() with usearch legacy fallback path."
+    },
+    {
+      "id": "cs-conn-3",
+      "name": "delegates search/extract/crawl",
+      "direction": "outgoing",
+      "originId": "cs-cli",
+      "targetId": "cs-local-backend",
+      "description": "CLI fanout/extract/crawl modes call the LocalExecutionBackend."
+    },
+    {
+      "id": "cs-conn-4",
+      "name": "starts --agent research loop",
+      "direction": "outgoing",
+      "originId": "cs-cli",
+      "targetId": "cs-react-agent",
+      "description": "runAgentMode constructs a SearchAgent and calls research()."
+    },
+    {
+      "id": "cs-conn-5",
+      "name": "tool call <provider>.<tool>",
+      "direction": "outgoing",
+      "originId": "cs-cli",
+      "targetId": "cs-tool-substrate",
+      "description": "coldsearch tool call executes a networked provider-native tool over the substrate."
+    },
+    {
+      "id": "cs-conn-6",
+      "name": "tool list / tool info (offline)",
+      "direction": "outgoing",
+      "originId": "cs-cli",
+      "targetId": "cs-profile-registry",
+      "description": "Read-only registry inspection; no network calls."
+    },
+    {
+      "id": "cs-conn-7",
+      "name": "status reads 7-day usage summary",
+      "direction": "outgoing",
+      "originId": "cs-cli",
+      "targetId": "cs-store-audit",
+      "description": "coldsearch status aggregates the last 5000 lines / 7 days of usage JSONL."
+    },
+    {
+      "id": "cs-conn-8",
+      "name": "loads config; reads cache TTLs + pools",
+      "direction": "outgoing",
+      "originId": "cs-local-backend",
+      "targetId": "cs-store-config",
+      "description": "Constructor loads config for cache TTLs and provider pools."
+    },
+    {
+      "id": "cs-conn-9",
+      "name": "runs fanout + RRF rerank",
+      "direction": "outgoing",
+      "originId": "cs-local-backend",
+      "targetId": "cs-fanout-rrf",
+      "description": "search/extract/crawl dispatched through the FanoutEngine."
+    },
+    {
+      "id": "cs-conn-10",
+      "name": "read-through cache get/set",
+      "direction": "bidirectional",
+      "originId": "cs-local-backend",
+      "targetId": "cs-store-cache",
+      "description": "search/extract only; default provider pool only; bypassed by --providers/--single-provider/--no-cache and by crawl."
+    },
+    {
+      "id": "cs-conn-11",
+      "name": "resolveCapabilityProviders + feature routing",
+      "direction": "outgoing",
+      "originId": "cs-fanout-rrf",
+      "targetId": "cs-profile-registry",
+      "description": "resolveEligibleTools narrows providers by feature predicates when requireFeatures is set."
+    },
+    {
+      "id": "cs-conn-12",
+      "name": "parallel fanout to provider pool",
+      "direction": "outgoing",
+      "originId": "cs-fanout-rrf",
+      "targetId": "cs-adapters",
+      "description": "Promise.allSettled dispatch with per-provider error isolation; createAdapter per provider."
+    },
+    {
+      "id": "cs-conn-13",
+      "name": "resolves doppler: key refs via CLI",
+      "direction": "outgoing",
+      "originId": "cs-fanout-rrf",
+      "targetId": "cs-ext-doppler",
+      "description": "KeyPoolManager shells out to doppler secrets get NAME --plain; in-process cache 5m with in-flight coalescing."
+    },
+    {
+      "id": "cs-conn-14",
+      "name": "writes per-provider usage JSONL",
+      "direction": "outgoing",
+      "originId": "cs-fanout-rrf",
+      "targetId": "cs-store-audit",
+      "description": "One entry per provider call with safe key ref, success, response_time_ms, error."
+    },
+    {
+      "id": "cs-conn-15",
+      "name": "HTTPS POST /search, /extract, /crawl",
+      "direction": "outgoing",
+      "originId": "cs-adapter-tavily",
+      "targetId": "cs-ext-tavily"
+    },
+    {
+      "id": "cs-conn-16",
+      "name": "HTTPS GET /res/v1/web/search",
+      "direction": "outgoing",
+      "originId": "cs-adapter-brave",
+      "targetId": "cs-ext-brave"
+    },
+    {
+      "id": "cs-conn-17",
+      "name": "HTTPS POST /search, /contents, /findSimilar",
+      "direction": "outgoing",
+      "originId": "cs-adapter-exa",
+      "targetId": "cs-ext-exa"
+    },
+    {
+      "id": "cs-conn-18",
+      "name": "HTTPS POST /search (Google SERP)",
+      "direction": "outgoing",
+      "originId": "cs-adapter-serper",
+      "targetId": "cs-ext-serper"
+    },
+    {
+      "id": "cs-conn-19",
+      "name": "HTTPS GET r.jina.ai/<url> (keyless)",
+      "direction": "outgoing",
+      "originId": "cs-adapter-jina",
+      "targetId": "cs-ext-jina"
+    },
+    {
+      "id": "cs-conn-20",
+      "name": "HTTPS POST /search, /scrape, /crawl",
+      "direction": "outgoing",
+      "originId": "cs-adapter-firecrawl",
+      "targetId": "cs-ext-firecrawl"
+    },
+    {
+      "id": "cs-conn-21",
+      "name": "HTTPS GET <baseUrl>/search (self-hosted)",
+      "direction": "outgoing",
+      "originId": "cs-adapter-searxng",
+      "targetId": "cs-ext-searxng"
+    },
+    {
+      "id": "cs-conn-22",
+      "name": "validates tool id + hard-exclusion check",
+      "direction": "outgoing",
+      "originId": "cs-tool-substrate",
+      "targetId": "cs-profile-registry",
+      "description": "getToolProfile + isHardExcluded (e.g. firecrawl.agent) before dispatch."
+    },
+    {
+      "id": "cs-conn-23",
+      "name": "resolves doppler: key refs",
+      "direction": "outgoing",
+      "originId": "cs-tool-substrate",
+      "targetId": "cs-ext-doppler",
+      "description": "Substrate builds its own KeyPoolManager from config and resolves keys per tool."
+    },
+    {
+      "id": "cs-conn-24",
+      "name": "writes tool-call usage JSONL",
+      "direction": "outgoing",
+      "originId": "cs-tool-substrate",
+      "targetId": "cs-store-audit",
+      "description": "Logs provider, tool, catalogued, safe key ref, success, duration."
+    },
+    {
+      "id": "cs-conn-25",
+      "name": "OpenAI-compatible /chat/completions",
+      "direction": "outgoing",
+      "originId": "cs-react-agent",
+      "targetId": "cs-ext-llm",
+      "description": "Structured JSON tool/final payloads; never calls the Anthropic API."
+    },
+    {
+      "id": "cs-conn-26",
+      "name": "search tool reuses execution backend",
+      "direction": "outgoing",
+      "originId": "cs-react-agent",
+      "targetId": "cs-local-backend",
+      "description": "Agent owns its own LocalExecutionBackend and calls backend.search with rerankStrategy rrf."
+    },
+    {
+      "id": "cs-conn-27",
+      "name": "SSRF-validated HTTP fetch",
+      "direction": "outgoing",
+      "originId": "cs-react-agent",
+      "targetId": "cs-ext-web",
+      "description": "fetchValidatedBody: protocol allowlist, hostname/IP deny list, DNS validation, IP pinning, 10s timeout, 1 MiB cap; redirects not followed."
+    },
+    {
+      "id": "cs-conn-28",
+      "name": "will share core (planned)",
+      "direction": "outgoing",
+      "originId": "cs-future-api",
+      "targetId": "cs-local-backend",
+      "tagIds": ["cs-tag-future"],
+      "description": "HTTP entrypoint over the same ExecutionBackend (not yet implemented)."
+    },
+    {
+      "id": "cs-conn-29",
+      "name": "will share core (planned)",
+      "direction": "outgoing",
+      "originId": "cs-future-mcp",
+      "targetId": "cs-local-backend",
+      "tagIds": ["cs-tag-future"],
+      "description": "MCP entrypoint over the same core (not yet implemented)."
+    },
+    {
+      "id": "cs-conn-30",
+      "name": "will host async jobs (planned)",
+      "direction": "outgoing",
+      "originId": "cs-future-daemon",
+      "targetId": "cs-local-backend",
+      "tagIds": ["cs-tag-future"],
+      "description": "Daemon hosts long-running/async agentic jobs; remote worker itself is Deferred."
+    }
+  ]
+}

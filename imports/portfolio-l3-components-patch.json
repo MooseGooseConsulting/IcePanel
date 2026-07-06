@@ -1,0 +1,104 @@
+{
+  "modelObjects": [
+    {
+      "id": "pf-comp-evidence",
+      "name": "Review Evidence Builder",
+      "type": "component",
+      "parentId": "pf-app-workflow",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "Workflow step: diff stat, changed files, optional lint/test probe output in .ai-review-evidence/",
+      "caption": "evidence collection"
+    },
+    {
+      "id": "pf-comp-debounce",
+      "name": "Debounce and Stale SHA Guard",
+      "type": "component",
+      "parentId": "pf-app-workflow",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "600s sleep, concurrency cancel-in-progress, gh pr view headRefOid check before review.",
+      "caption": "debounce guard"
+    },
+    {
+      "id": "pf-comp-openhands-agent",
+      "name": "OpenHands Agent Script",
+      "type": "component",
+      "parentId": "pf-app-openhands",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "agent_script.py: full repo access, bash, inline PR comments via llm-base-url.",
+      "caption": "primary reviewer"
+    },
+    {
+      "id": "pf-comp-aireview-runner",
+      "name": "AI Review Summary Runner",
+      "type": "component",
+      "parentId": "pf-app-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "Nikita-Filonov/ai-review run-summary with OpenAI-compatible LiteLLM config.",
+      "caption": "secondary summary"
+    },
+    {
+      "id": "pf-comp-litellm-router",
+      "name": "LiteLLM Model Router",
+      "type": "component",
+      "parentId": "pf-app-litellm",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-byok"],
+      "description": "qwen-review alias to hosted_vllm/Qwen3.6-35B-A3B, drop_params, 180s timeout.",
+      "caption": "BYOK gateway"
+    },
+    {
+      "id": "pf-comp-guardian-interview",
+      "name": "Guardian Interview Generator",
+      "type": "component",
+      "parentId": "portfolio-app-guardian",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-live", "tag-governance"],
+      "description": "OpenAI semantic review against pinned North Star; posts structured interview.",
+      "caption": "North Star interview"
+    }
+  ],
+  "modelConnections": [
+    {
+      "id": "pf-conn-comp-debounce-workflow",
+      "name": "gates review start",
+      "direction": "outgoing",
+      "originId": "pf-comp-debounce",
+      "targetId": "pf-app-runner",
+      "description": "Only proceeds to runner steps after debounce and stale SHA pass."
+    },
+    {
+      "id": "pf-conn-comp-evidence-openhands",
+      "name": "feeds evidence to",
+      "direction": "outgoing",
+      "originId": "pf-comp-evidence",
+      "targetId": "pf-comp-openhands-agent",
+      "description": "Optional evidence bundle for OpenHands review context."
+    },
+    {
+      "id": "pf-conn-comp-openhands-litellm",
+      "name": "LLM calls via",
+      "direction": "outgoing",
+      "originId": "pf-comp-openhands-agent",
+      "targetId": "pf-comp-litellm-router",
+      "description": "chat/completions to qwen-review alias."
+    },
+    {
+      "id": "pf-conn-comp-aireview-litellm",
+      "name": "summary LLM via",
+      "direction": "outgoing",
+      "originId": "pf-comp-aireview-runner",
+      "targetId": "pf-comp-litellm-router",
+      "description": "Same LiteLLM gateway, run-summary mode."
+    }
+  ]
+}

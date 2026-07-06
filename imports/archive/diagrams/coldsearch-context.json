@@ -1,0 +1,136 @@
+﻿{
+    "handleId":  "coldsearch-context",
+    "type":  "context-diagram",
+    "connections":  {
+
+                    },
+    "modelId":  "0ahfCaTLSxsooY3zIEA4",
+    "name":  "coldsearch - Context",
+    "index":  0,
+    "comments":  {
+
+                 },
+    "objects":  {
+                    "do-ext-4":  {
+                                     "id":  "do-ext-4",
+                                     "y":  720,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "OaIJykzAWaCWC1tEl4e0"
+                                 },
+                    "do-0":  {
+                                 "id":  "do-0",
+                                 "y":  80,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "KJw1nORPPSpS0h8Xnwvt"
+                             },
+                    "do-ext-5":  {
+                                     "id":  "do-ext-5",
+                                     "y":  880,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "VWGnBHTMN6BfFH4RpORR"
+                                 },
+                    "do-ext-6":  {
+                                     "id":  "do-ext-6",
+                                     "y":  1040,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "XOHxzeHcFRiU8YnvLwEp"
+                                 },
+                    "do-ext-3":  {
+                                     "id":  "do-ext-3",
+                                     "y":  560,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "FHrKSPq3IfHR0fJa6Zyg"
+                                 },
+                    "do-ext-2":  {
+                                     "id":  "do-ext-2",
+                                     "y":  400,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "9pzm9R3dU3EMuYPx7gLA"
+                                 },
+                    "do-ext-1":  {
+                                     "id":  "do-ext-1",
+                                     "y":  240,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "7Pnv2sDECh87Ju68GeqV"
+                                 },
+                    "do-ext-7":  {
+                                     "id":  "do-ext-7",
+                                     "y":  1200,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "YUvExDFFHG5sNlZBNzHL"
+                                 },
+                    "do-ext-9":  {
+                                     "id":  "do-ext-9",
+                                     "y":  1520,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "ZzOcvbOYGxK70zuUhxnr"
+                                 },
+                    "do-ext-8":  {
+                                     "id":  "do-ext-8",
+                                     "y":  1360,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "Yo2lhWcjfAXu998vwKQH"
+                                 },
+                    "do-sys-0":  {
+                                     "id":  "do-sys-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "neRVNWVH60QmzbFOmiZ4"
+                                 },
+                    "do-ext-0":  {
+                                     "id":  "do-ext-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "30FSd0CkWfKe6yJDAfco"
+                                 }
+                },
+    "pinned":  true
+}

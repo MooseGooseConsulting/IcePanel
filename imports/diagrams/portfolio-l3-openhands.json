@@ -1,0 +1,33 @@
+{
+  "name": "OpenHands PR Review - Components (L3)",
+  "handleId": "portfolio-l3-openhands",
+  "type": "component-diagram",
+  "modelId": "OyzKKf3fzSJKsrB7c9jX",
+  "index": 11,
+  "pinned": false,
+  "description": "C4 Level 3: components inside OpenHands PR Review.",
+  "objects": {
+    "do-app": {
+      "id": "do-app",
+      "modelId": "OyzKKf3fzSJKsrB7c9jX",
+      "type": "app",
+      "shape": "box",
+      "x": 80,
+      "y": 180,
+      "width": 240,
+      "height": 100
+    },
+    "do-comp-0": {
+      "id": "do-comp-0",
+      "modelId": "8Ug5JVEf4z1sOt6kBk21",
+      "type": "component",
+      "shape": "box",
+      "x": 380,
+      "y": 80,
+      "width": 240,
+      "height": 90
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

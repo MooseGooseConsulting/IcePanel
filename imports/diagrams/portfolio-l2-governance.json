@@ -1,0 +1,43 @@
+{
+  "name": "Agent Governance - Containers (L2)",
+  "handleId": "portfolio-l2-governance",
+  "type": "app-diagram",
+  "modelId": "LR0pM5V6J5X3rDTxObwS",
+  "index": 3,
+  "pinned": false,
+  "description": "C4 Level 2: apps and stores inside Agent Governance.",
+  "objects": {
+    "do-sys": {
+      "id": "do-sys",
+      "modelId": "LR0pM5V6J5X3rDTxObwS",
+      "type": "system",
+      "shape": "box",
+      "x": 80,
+      "y": 200,
+      "width": 280,
+      "height": 120
+    },
+    "do-app-0": {
+      "id": "do-app-0",
+      "modelId": "NuXP843vvNEwY06RrUbu",
+      "type": "app",
+      "shape": "box",
+      "x": 420,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-1": {
+      "id": "do-app-1",
+      "modelId": "pFE6co2KK3HyqJgkwXzj",
+      "type": "app",
+      "shape": "box",
+      "x": 680,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

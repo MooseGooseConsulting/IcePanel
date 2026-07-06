@@ -1,0 +1,759 @@
+﻿{
+    "landscapeId":  "Efdez5uW6BfQjErrQ4Gx",
+    "slug":  "portfolio",
+    "connections":  [
+                        {
+                            "id":  "2ystvxPVswKSfVXXMWql",
+                            "name":  "posts inline PR comments",
+                            "targetId":  "5wBngeCOekozxQaNKbCN",
+                            "originId":  "OyzKKf3fzSJKsrB7c9jX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "5mR5HijR7OqTYglcYMVQ",
+                            "name":  "internal LLM endpoint for",
+                            "targetId":  "AZ2PK56G0IweXTRsVzd8",
+                            "originId":  "MpRhQjqByiLr5YceVarb",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "7BXDcsMku69PjSPmZLAg",
+                            "name":  "scans fleet repos and branch protection via",
+                            "targetId":  "5wBngeCOekozxQaNKbCN",
+                            "originId":  "vffQBjnrkEKDGFCgKJ3v",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "7ftAqRsEilSlu0XsSw4L",
+                            "name":  "stores corpus on",
+                            "targetId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originId":  "CeIoHeGfqAf89BE2ombJ",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "8Mk3U6sKT8XLnH4B2Aww",
+                            "name":  "reads house style from",
+                            "targetId":  "Ow02lvMoGzbLYW3VxouY",
+                            "originId":  "2mheYeoY30HpnGBL7IKs",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "8OiiUUiMRCt9jguKHnw5",
+                            "name":  "use for web/extract/crawl",
+                            "targetId":  "KSFOe5pCnNLC3pAlexNZ",
+                            "originId":  "wdEjC1pfpdliKPJa1SNa",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "9szRbvEzQcgHDOLAiYVe",
+                            "name":  "invokes advisory agents on",
+                            "targetId":  "a4Ye2RduBbuSKocU0y93",
+                            "originId":  "NuXP843vvNEwY06RrUbu",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "9zQVQHnBKdCm3vgTO9f6",
+                            "name":  "distilled learnings feed",
+                            "targetId":  "sEQBYlNn4fn1sTXTOZ8B",
+                            "originId":  "CeIoHeGfqAf89BE2ombJ",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "AW38GqB28l7UI9uPv9DI",
+                            "name":  "PR opened/synchronize/reopened/ready_for_review",
+                            "targetId":  "D1kHVFUTBL23yW0UBDxg",
+                            "originId":  "5wBngeCOekozxQaNKbCN",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "CSZ7257cwaShGtp9ImnR",
+                            "name":  "sends PR webhooks to",
+                            "targetId":  "NuXP843vvNEwY06RrUbu",
+                            "originId":  "5wBngeCOekozxQaNKbCN",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "DfInRoje3smL1xWwiGqQ",
+                            "name":  "LLM calls via",
+                            "targetId":  "f8tzqt0FhVt615mcwlrn",
+                            "originId":  "8Ug5JVEf4z1sOt6kBk21",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "FdfbFtIHT2W06L87b9US",
+                            "name":  "runner executes on",
+                            "targetId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originId":  "kHi8SBWeX7mvi234tAbl",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "HhWatSG3ocmgKict3EXg",
+                            "name":  "posts one advisory comment to",
+                            "targetId":  "5wBngeCOekozxQaNKbCN",
+                            "originId":  "NuXP843vvNEwY06RrUbu",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "HtHLBkyldYaa8DRUnEcr",
+                            "name":  "fans out and receives results",
+                            "targetId":  "fBRxx9piJNoWhecTVSqp",
+                            "originId":  "KSFOe5pCnNLC3pAlexNZ",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "INtIB0wp67cWgwXXjpsz",
+                            "name":  "OpenAI-compatible API via",
+                            "targetId":  "zBsSgLaXIh5Dx0Atsd8L",
+                            "originId":  "2mheYeoY30HpnGBL7IKs",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "IZmOr8PxFBNUSCJzisnh",
+                            "name":  "syncs runtime secrets via ESO into",
+                            "targetId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originId":  "lc5wm71XbLTKBMIlhGSL",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "JbQRhNPqseEeppqLPwPX",
+                            "name":  "runs on self-hosted runner",
+                            "targetId":  "kHi8SBWeX7mvi234tAbl",
+                            "originId":  "D1kHVFUTBL23yW0UBDxg",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "JybY6c811MpoSWX2txe7",
+                            "name":  "call model and agent runtimes on",
+                            "targetId":  "a4Ye2RduBbuSKocU0y93",
+                            "originId":  "wdEjC1pfpdliKPJa1SNa",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "RkqJFT29pFw7OG06Djl4",
+                            "name":  "directs and reviews",
+                            "targetId":  "wdEjC1pfpdliKPJa1SNa",
+                            "originId":  "TzxKu9jYZJyG9YQuYeEX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "SCGLpCjKAi8cOuXlPhBE",
+                            "name":  "worker VMs on",
+                            "targetId":  "xWsoNAvV3Dm7zRTTJCqX",
+                            "originId":  "QdPtEM2FRZrcqF8JD38L",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "SabS7KqBbRZYerWasy3a",
+                            "name":  "reviews learnings in",
+                            "targetId":  "sEQBYlNn4fn1sTXTOZ8B",
+                            "originId":  "TzxKu9jYZJyG9YQuYeEX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "TJ7YvaqKRTDDnEtG8DZf",
+                            "name":  "maintains and applies",
+                            "targetId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originId":  "TzxKu9jYZJyG9YQuYeEX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "TRnNi7bwsETgsSLFIDq5",
+                            "name":  "invokes summary review",
+                            "targetId":  "2mheYeoY30HpnGBL7IKs",
+                            "originId":  "kHi8SBWeX7mvi234tAbl",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "UYAc8k7u6Mew2pl2g5cu",
+                            "name":  "invokes primary inline review",
+                            "targetId":  "OyzKKf3fzSJKsrB7c9jX",
+                            "originId":  "kHi8SBWeX7mvi234tAbl",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "VAFayoIrMioUSgVBPCax",
+                            "name":  "posts interview comments to",
+                            "targetId":  "5wBngeCOekozxQaNKbCN",
+                            "originId":  "pFE6co2KK3HyqJgkwXzj",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "VDtCWikk7du1CvDNmTTk",
+                            "name":  "hosted_vllm route to",
+                            "targetId":  "MpRhQjqByiLr5YceVarb",
+                            "originId":  "zBsSgLaXIh5Dx0Atsd8L",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "aCefrEUYZQoDTeMKDvUQ",
+                            "name":  "serves internal LLM endpoint to",
+                            "targetId":  "wdEjC1pfpdliKPJa1SNa",
+                            "originId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "cT58ZG289TU8CndyS7B1",
+                            "name":  "edges public sites to",
+                            "targetId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originId":  "QzeK7d4BvVgeSTkvrqc0",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "d71BSYOypDi6O9Rovw9e",
+                            "name":  "promotes skills and ADRs to",
+                            "targetId":  "wdEjC1pfpdliKPJa1SNa",
+                            "originId":  "sEQBYlNn4fn1sTXTOZ8B",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "fCUChY6mPGNHuZXCIHtc",
+                            "name":  "resolves provider keys via",
+                            "targetId":  "lc5wm71XbLTKBMIlhGSL",
+                            "originId":  "KSFOe5pCnNLC3pAlexNZ",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "fg3HSMONmm8x9FcMKR7F",
+                            "name":  "complements advisory review",
+                            "targetId":  "pFE6co2KK3HyqJgkwXzj",
+                            "originId":  "OyzKKf3fzSJKsrB7c9jX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "goSyQQYQMFkw3W08MRSR",
+                            "name":  "posts summary review",
+                            "targetId":  "5wBngeCOekozxQaNKbCN",
+                            "originId":  "2mheYeoY30HpnGBL7IKs",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "i4LcRm8tPElMgxygMgIe",
+                            "name":  "feeds evidence to",
+                            "targetId":  "8Ug5JVEf4z1sOt6kBk21",
+                            "originId":  "jGaVFVDk3ipp4CuMZEev",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "iKTqqsSGPKcGP88j1mJP",
+                            "name":  "optional policy and follow-ups",
+                            "targetId":  "aZaKxiYMZ6Q3blofRMsh",
+                            "originId":  "pFE6co2KK3HyqJgkwXzj",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "ltt6m26Tewr663OFMlxn",
+                            "name":  "gates review start",
+                            "targetId":  "kHi8SBWeX7mvi234tAbl",
+                            "originId":  "u7GTBz4mENWlWEEFY28I",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "mRBxYiPyJ845P57qt8po",
+                            "name":  "some apps deploy to",
+                            "targetId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originId":  "aUCX6dpnsQEEsuivcbdn",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "n6WkBGNPWRtngx5e7tc6",
+                            "name":  "runs llm-qwen36 LXC",
+                            "targetId":  "MpRhQjqByiLr5YceVarb",
+                            "originId":  "xWsoNAvV3Dm7zRTTJCqX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "oguC0pjBk3OL6g4UrVHD",
+                            "name":  "semantic review via",
+                            "targetId":  "a4Ye2RduBbuSKocU0y93",
+                            "originId":  "pFE6co2KK3HyqJgkwXzj",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "pSEOxbVqtHcA93m7Bg8o",
+                            "name":  "summary LLM via",
+                            "targetId":  "f8tzqt0FhVt615mcwlrn",
+                            "originId":  "4K7cANUz3t3zfNM6bbrS",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "qa4lVvrjBLdOPT3IVEV0",
+                            "name":  "produce transcripts to",
+                            "targetId":  "CeIoHeGfqAf89BE2ombJ",
+                            "originId":  "wdEjC1pfpdliKPJa1SNa",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "rJFM96Bzqf0Ffm4ZxLQQ",
+                            "name":  "promotes skills to",
+                            "targetId":  "00g87kidVb2u2UCX6D8E",
+                            "originId":  "0tAiPOH554uqpXwLOQeo",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "vQZk0t7FZtfBNl9e7Kd7",
+                            "name":  "parallel advisory path",
+                            "targetId":  "pFE6co2KK3HyqJgkwXzj",
+                            "originId":  "5wBngeCOekozxQaNKbCN",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "x3DmdIxhgRuQJVGgYslm",
+                            "name":  "sends PR webhooks to",
+                            "targetId":  "pFE6co2KK3HyqJgkwXzj",
+                            "originId":  "5wBngeCOekozxQaNKbCN",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "x9IMbznnd72I08H7ZjFX",
+                            "name":  "offsite backups to R2",
+                            "targetId":  "QzeK7d4BvVgeSTkvrqc0",
+                            "originId":  "TwpQ6c0P5EAziZyIKNTy",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "yo8hpg9nITVnMKw9eSQp",
+                            "name":  "reads house style from",
+                            "targetId":  "Ow02lvMoGzbLYW3VxouY",
+                            "originId":  "OyzKKf3fzSJKsrB7c9jX",
+                            "originName":  null,
+                            "targetName":  null
+                        },
+                        {
+                            "id":  "zh0v7S3B7n8TsxOxMOky",
+                            "name":  "chat/completions via",
+                            "targetId":  "zBsSgLaXIh5Dx0Atsd8L",
+                            "originId":  "OyzKKf3fzSJKsrB7c9jX",
+                            "originName":  null,
+                            "targetName":  null
+                        }
+                    ],
+    "domainId":  "kpRaY0I26jePPy6lnsza",
+    "domainName":  "Patrick Portfolio",
+    "versionId":  "RlqaJB3HuwzYkFs3EcJW",
+    "connectionCount":  46,
+    "objects":  [
+                    {
+                        "id":  "00g87kidVb2u2UCX6D8E",
+                        "name":  "frozenSkillz",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "pf-ext-frozenskillz",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "0tAiPOH554uqpXwLOQeo",
+                        "name":  "Learning Promotion Queue",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-corpus-queue",
+                        "status":  "live",
+                        "parentId":  "sEQBYlNn4fn1sTXTOZ8B"
+                    },
+                    {
+                        "id":  "2mheYeoY30HpnGBL7IKs",
+                        "name":  "AI Review (Nikita-Filonov)",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-aireview",
+                        "status":  "future",
+                        "parentId":  "vfiraZL9zlC53x6saWT2"
+                    },
+                    {
+                        "id":  "4K7cANUz3t3zfNM6bbrS",
+                        "name":  "AI Review Summary Runner",
+                        "external":  false,
+                        "type":  "component",
+                        "importOriginalId":  "pf-comp-aireview-runner",
+                        "status":  "future",
+                        "parentId":  "2mheYeoY30HpnGBL7IKs"
+                    },
+                    {
+                        "id":  "5wBngeCOekozxQaNKbCN",
+                        "name":  "GitHub",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-github",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "8Ug5JVEf4z1sOt6kBk21",
+                        "name":  "OpenHands Agent Script",
+                        "external":  false,
+                        "type":  "component",
+                        "importOriginalId":  "pf-comp-openhands-agent",
+                        "status":  "future",
+                        "parentId":  "OyzKKf3fzSJKsrB7c9jX"
+                    },
+                    {
+                        "id":  "AZ2PK56G0IweXTRsVzd8",
+                        "name":  "ColdSearch CLI",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-coldsearch-cli",
+                        "status":  "live",
+                        "parentId":  "KSFOe5pCnNLC3pAlexNZ"
+                    },
+                    {
+                        "id":  "Ab1BI62SUEIfn4JHMmkY",
+                        "name":  "PR Review and Governance",
+                        "external":  false,
+                        "type":  "group",
+                        "importOriginalId":  "pf-group-governance",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "CeIoHeGfqAf89BE2ombJ",
+                        "name":  "LLM Conversation Archive",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-archive",
+                        "status":  "future",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "D1kHVFUTBL23yW0UBDxg",
+                        "name":  "AI PR Review Workflow",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-workflow",
+                        "status":  "future",
+                        "parentId":  "vfiraZL9zlC53x6saWT2"
+                    },
+                    {
+                        "id":  "KSFOe5pCnNLC3pAlexNZ",
+                        "name":  "ColdSearch",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-search",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "LR0pM5V6J5X3rDTxObwS",
+                        "name":  "Agent Governance",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-governance",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "MpRhQjqByiLr5YceVarb",
+                        "name":  "Qwen 3.6 LXC Sidecar",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-qwen-lxc",
+                        "status":  "live",
+                        "parentId":  "TwpQ6c0P5EAziZyIKNTy"
+                    },
+                    {
+                        "id":  "NuXP843vvNEwY06RrUbu",
+                        "name":  "PRAgent",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "portfolio-app-pragent",
+                        "status":  "future",
+                        "parentId":  "LR0pM5V6J5X3rDTxObwS"
+                    },
+                    {
+                        "id":  "Ow02lvMoGzbLYW3VxouY",
+                        "name":  "AI Review Policy",
+                        "external":  false,
+                        "type":  "store",
+                        "importOriginalId":  "pf-store-review-policy",
+                        "status":  "future",
+                        "parentId":  "vfiraZL9zlC53x6saWT2"
+                    },
+                    {
+                        "id":  "OyzKKf3fzSJKsrB7c9jX",
+                        "name":  "OpenHands PR Review",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-openhands",
+                        "status":  "future",
+                        "parentId":  "vfiraZL9zlC53x6saWT2"
+                    },
+                    {
+                        "id":  "QdPtEM2FRZrcqF8JD38L",
+                        "name":  "Talos Kubernetes Cluster",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-talos",
+                        "status":  "live",
+                        "parentId":  "TwpQ6c0P5EAziZyIKNTy"
+                    },
+                    {
+                        "id":  "QzeK7d4BvVgeSTkvrqc0",
+                        "name":  "Cloudflare",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-cloudflare",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "S7ChzZCil6w5SixPc9yh",
+                        "name":  "Search Archive and Learning",
+                        "external":  false,
+                        "type":  "group",
+                        "importOriginalId":  "pf-group-data",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "TwpQ6c0P5EAziZyIKNTy",
+                        "name":  "Homelab Platform",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-homelab",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "TzxKu9jYZJyG9YQuYeEX",
+                        "name":  "Operator (Patrick)",
+                        "external":  false,
+                        "type":  "actor",
+                        "importOriginalId":  "portfolio-actor-operator",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "a4Ye2RduBbuSKocU0y93",
+                        "name":  "LLM and Agent Runtimes",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-llm",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "aSGY2iXy7j3fgQ9Q1Hf0",
+                        "name":  "LLM Archiver Ingestion",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-archiver-core",
+                        "status":  "future",
+                        "parentId":  "CeIoHeGfqAf89BE2ombJ"
+                    },
+                    {
+                        "id":  "aUCX6dpnsQEEsuivcbdn",
+                        "name":  "Personal Tools and Experiments",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-tools",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "aZaKxiYMZ6Q3blofRMsh",
+                        "name":  "Linear",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-linear",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "f8tzqt0FhVt615mcwlrn",
+                        "name":  "LiteLLM Model Router",
+                        "external":  false,
+                        "type":  "component",
+                        "importOriginalId":  "pf-comp-litellm-router",
+                        "status":  "future",
+                        "parentId":  "zBsSgLaXIh5Dx0Atsd8L"
+                    },
+                    {
+                        "id":  "fBRxx9piJNoWhecTVSqp",
+                        "name":  "Search and Extract Providers",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-search-providers",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "jGaVFVDk3ipp4CuMZEev",
+                        "name":  "Review Evidence Builder",
+                        "external":  false,
+                        "type":  "component",
+                        "importOriginalId":  "pf-comp-evidence",
+                        "status":  "future",
+                        "parentId":  "D1kHVFUTBL23yW0UBDxg"
+                    },
+                    {
+                        "id":  "kHi8SBWeX7mvi234tAbl",
+                        "name":  "Self-Hosted GitHub Runner",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-runner",
+                        "status":  "future",
+                        "parentId":  "vfiraZL9zlC53x6saWT2"
+                    },
+                    {
+                        "id":  "kpRaY0I26jePPy6lnsza",
+                        "name":  "Patrick Portfolio",
+                        "external":  false,
+                        "type":  "root",
+                        "importOriginalId":  "portfolio-dom",
+                        "status":  "live",
+                        "parentId":  null
+                    },
+                    {
+                        "id":  "lTpvoUMdl6aPkKU6UaGO",
+                        "name":  "Guardian Interview Generator",
+                        "external":  false,
+                        "type":  "component",
+                        "importOriginalId":  "pf-comp-guardian-interview",
+                        "status":  "live",
+                        "parentId":  "pFE6co2KK3HyqJgkwXzj"
+                    },
+                    {
+                        "id":  "lc5wm71XbLTKBMIlhGSL",
+                        "name":  "Doppler",
+                        "external":  true,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-doppler",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "pFE6co2KK3HyqJgkwXzj",
+                        "name":  "NorthStarGuardian",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "portfolio-app-guardian",
+                        "status":  "live",
+                        "parentId":  "LR0pM5V6J5X3rDTxObwS"
+                    },
+                    {
+                        "id":  "plj099xOqpHenbwyEZ2x",
+                        "name":  "",
+                        "external":  false,
+                        "type":  "root",
+                        "importOriginalId":  null,
+                        "status":  "live",
+                        "parentId":  null
+                    },
+                    {
+                        "id":  "sEQBYlNn4fn1sTXTOZ8B",
+                        "name":  "Agent Learning Corpus",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-corpus",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "u7GTBz4mENWlWEEFY28I",
+                        "name":  "Debounce and Stale SHA Guard",
+                        "external":  false,
+                        "type":  "component",
+                        "importOriginalId":  "pf-comp-debounce",
+                        "status":  "future",
+                        "parentId":  "D1kHVFUTBL23yW0UBDxg"
+                    },
+                    {
+                        "id":  "vffQBjnrkEKDGFCgKJ3v",
+                        "name":  "Portfolio Control Service",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "portfolio-sys-control",
+                        "status":  "future",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "vfiraZL9zlC53x6saWT2",
+                        "name":  "AI PR Review Pipeline",
+                        "external":  false,
+                        "type":  "system",
+                        "importOriginalId":  "pf-sys-aireview",
+                        "status":  "future",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "vlxpv0ObZvMTmlY1LNru",
+                        "name":  "Homelab and Inference",
+                        "external":  false,
+                        "type":  "group",
+                        "importOriginalId":  "pf-group-homelab",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "wdEjC1pfpdliKPJa1SNa",
+                        "name":  "AI Coding Agents",
+                        "external":  false,
+                        "type":  "actor",
+                        "importOriginalId":  "portfolio-actor-agents",
+                        "status":  "live",
+                        "parentId":  "kpRaY0I26jePPy6lnsza"
+                    },
+                    {
+                        "id":  "xWsoNAvV3Dm7zRTTJCqX",
+                        "name":  "Proxmox VE 9 Host",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-proxmox",
+                        "status":  "live",
+                        "parentId":  "TwpQ6c0P5EAziZyIKNTy"
+                    },
+                    {
+                        "id":  "zBsSgLaXIh5Dx0Atsd8L",
+                        "name":  "LiteLLM Gateway",
+                        "external":  false,
+                        "type":  "app",
+                        "importOriginalId":  "pf-app-litellm",
+                        "status":  "future",
+                        "parentId":  "vfiraZL9zlC53x6saWT2"
+                    }
+                ],
+    "objectCount":  42
+}

@@ -1,0 +1,27 @@
+﻿{
+    "governance":  {
+                       "landscapeId":  "Svbe4JxL01yfpIidvbHC",
+                       "name":  "Agent Governance",
+                       "versionId":  "YgP7H8cp5zsERVVogdvC"
+                   },
+    "portfolio":  {
+                      "landscapeId":  "Efdez5uW6BfQjErrQ4Gx",
+                      "name":  "Patrick Portfolio",
+                      "versionId":  "RlqaJB3HuwzYkFs3EcJW"
+                  },
+    "k8s":  {
+                "landscapeId":  "JyXDiYoXVfa7Xz3AnEfY",
+                "name":  "Coldaine K8s Platform",
+                "versionId":  "zPWrGuRupxcXQnncM73e"
+            },
+    "archiver":  {
+                     "landscapeId":  "Q6smKpwNRmY1GsLzvqni",
+                     "name":  "LLM Archiver",
+                     "versionId":  "CDrnlqJoHCGjscZCeoRN"
+                 },
+    "coldsearch":  {
+                       "landscapeId":  "DbkFHxfNxrKks6oOISUw",
+                       "name":  "ColdSearch Runtime",
+                       "versionId":  "Z6B0GwB7NVWsuQjEX1SF"
+                   }
+}

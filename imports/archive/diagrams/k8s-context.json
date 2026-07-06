@@ -1,0 +1,111 @@
+﻿{
+    "handleId":  "k8s-context",
+    "type":  "context-diagram",
+    "connections":  {
+                        "dc-0":  {
+                                     "targetId":  "do-2",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-0",
+                                     "lineShape":  "curved",
+                                     "modelId":  "3US6AZpzdScgubBQKgB9",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-0"
+                                 },
+                        "dc-1":  {
+                                     "targetId":  "do-1",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-1",
+                                     "lineShape":  "curved",
+                                     "modelId":  "ks9iaWfsNdcAZOImMavV",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-0"
+                                 }
+                    },
+    "modelId":  "JYCdlUdpYzp5wdUqFM9q",
+    "name":  "k8s - Context",
+    "index":  0,
+    "comments":  {
+
+                 },
+    "objects":  {
+                    "do-0":  {
+                                 "id":  "do-0",
+                                 "y":  80,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "FrZMgxSO6rAQ7kaHD3aR"
+                             },
+                    "do-sys-2":  {
+                                     "id":  "do-sys-2",
+                                     "y":  400,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "RNnlAYf0Q0PxJp3evcDa"
+                                 },
+                    "do-sys-3":  {
+                                     "id":  "do-sys-3",
+                                     "y":  560,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "ohv1JX6fFc8oz73veH3p"
+                                 },
+                    "do-2":  {
+                                 "id":  "do-2",
+                                 "y":  400,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "yEQYoE1Y7vqF3Y9gtwm7"
+                             },
+                    "do-1":  {
+                                 "id":  "do-1",
+                                 "y":  240,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "U0lkEneB9V9m83NGhUVk"
+                             },
+                    "do-sys-1":  {
+                                     "id":  "do-sys-1",
+                                     "y":  240,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "R2PrbTlW75AIhODDyG7u"
+                                 },
+                    "do-sys-0":  {
+                                     "id":  "do-sys-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "4apIgM8lmcFeYt63NQP8"
+                                 }
+                },
+    "pinned":  true
+}

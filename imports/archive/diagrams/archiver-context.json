@@ -1,0 +1,68 @@
+﻿{
+    "handleId":  "archiver-context",
+    "type":  "context-diagram",
+    "connections":  {
+                        "dc-0":  {
+                                     "targetId":  "do-ext-0",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-0",
+                                     "lineShape":  "curved",
+                                     "modelId":  "7IiI69HS3Q2OBjXyxOrz",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-0"
+                                 }
+                    },
+    "modelId":  "cd2sniyTnzof9pykFFVO",
+    "name":  "archiver - Context",
+    "index":  0,
+    "comments":  {
+
+                 },
+    "objects":  {
+                    "do-0":  {
+                                 "id":  "do-0",
+                                 "y":  80,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "JQg6EHD2BymlOhvc2gz9"
+                             },
+                    "do-1":  {
+                                 "id":  "do-1",
+                                 "y":  240,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "LAjEMkndsIZa071ROF7U"
+                             },
+                    "do-ext-0":  {
+                                     "id":  "do-ext-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "sW9IpiCrQn0YRoB1Rc2Q"
+                                 },
+                    "do-sys-0":  {
+                                     "id":  "do-sys-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "LSYs4I9p2rJZAjau9gTT"
+                                 }
+                },
+    "pinned":  true
+}

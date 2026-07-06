@@ -1,0 +1,20 @@
+{
+  "tagGroups": [
+    { "icon": "rocket", "id": "tg-status", "name": "Status" }
+  ],
+  "tags": [
+    { "color": "green", "groupId": "tg-status", "id": "tag-live", "name": "Live" },
+    { "color": "yellow", "groupId": "tg-status", "id": "tag-future", "name": "Future" }
+  ],
+  "modelObjects": [
+    { "id": "dom-demo", "name": "Scratch Demo Domain", "type": "domain" },
+    { "id": "sys-demo", "name": "Demo System", "type": "system", "parentId": "dom-demo", "tagIds": ["tag-live"] },
+    { "id": "app-demo", "name": "Demo App", "type": "app", "parentId": "sys-demo", "status": "live" },
+    { "id": "store-demo", "name": "Demo Store", "type": "store", "parentId": "sys-demo" },
+    { "id": "actor-user", "name": "Operator", "type": "actor", "parentId": "dom-demo" }
+  ],
+  "modelConnections": [
+    { "id": "conn-1", "name": "uses", "direction": "outgoing", "originId": "actor-user", "targetId": "app-demo" },
+    { "id": "conn-2", "name": "reads/writes", "direction": "bidirectional", "originId": "app-demo", "targetId": "store-demo" }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "AI PR Review Workflow - Components (L3)",
+  "handleId": "portfolio-l3-workflow",
+  "type": "component-diagram",
+  "modelId": "D1kHVFUTBL23yW0UBDxg",
+  "index": 10,
+  "pinned": false,
+  "description": "C4 Level 3: components inside AI PR Review Workflow.",
+  "objects": {
+    "do-app": {
+      "id": "do-app",
+      "modelId": "D1kHVFUTBL23yW0UBDxg",
+      "type": "app",
+      "shape": "box",
+      "x": 80,
+      "y": 180,
+      "width": 240,
+      "height": 100
+    },
+    "do-comp-0": {
+      "id": "do-comp-0",
+      "modelId": "jGaVFVDk3ipp4CuMZEev",
+      "type": "component",
+      "shape": "box",
+      "x": 380,
+      "y": 80,
+      "width": 240,
+      "height": 90
+    },
+    "do-comp-1": {
+      "id": "do-comp-1",
+      "modelId": "u7GTBz4mENWlWEEFY28I",
+      "type": "component",
+      "shape": "box",
+      "x": 660,
+      "y": 80,
+      "width": 240,
+      "height": 90
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

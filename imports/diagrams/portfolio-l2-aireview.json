@@ -1,0 +1,161 @@
+{
+  "name": "AI PR Review Pipeline - Containers (L2)",
+  "handleId": "portfolio-l2-aireview",
+  "type": "app-diagram",
+  "modelId": "vfiraZL9zlC53x6saWT2",
+  "index": 2,
+  "pinned": false,
+  "description": "C4 Level 2: apps and stores inside AI PR Review Pipeline.",
+  "objects": {
+    "do-sys": {
+      "id": "do-sys",
+      "modelId": "vfiraZL9zlC53x6saWT2",
+      "type": "system",
+      "shape": "box",
+      "x": 80,
+      "y": 200,
+      "width": 280,
+      "height": 120
+    },
+    "do-app-0": {
+      "id": "do-app-0",
+      "modelId": "2mheYeoY30HpnGBL7IKs",
+      "type": "app",
+      "shape": "box",
+      "x": 420,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-1": {
+      "id": "do-app-1",
+      "modelId": "D1kHVFUTBL23yW0UBDxg",
+      "type": "app",
+      "shape": "box",
+      "x": 680,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-2": {
+      "id": "do-app-2",
+      "modelId": "Ow02lvMoGzbLYW3VxouY",
+      "type": "store",
+      "shape": "box",
+      "x": 940,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-3": {
+      "id": "do-app-3",
+      "modelId": "OyzKKf3fzSJKsrB7c9jX",
+      "type": "app",
+      "shape": "box",
+      "x": 420,
+      "y": 220,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-4": {
+      "id": "do-app-4",
+      "modelId": "kHi8SBWeX7mvi234tAbl",
+      "type": "app",
+      "shape": "box",
+      "x": 680,
+      "y": 220,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-5": {
+      "id": "do-app-5",
+      "modelId": "zBsSgLaXIh5Dx0Atsd8L",
+      "type": "app",
+      "shape": "box",
+      "x": 940,
+      "y": 220,
+      "width": 240,
+      "height": 100
+    }
+  },
+  "connections": {
+    "dc-0": {
+      "id": "dc-0",
+      "modelId": "8Mk3U6sKT8XLnH4B2Aww",
+      "originId": "do-app-0",
+      "targetId": "do-app-2",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-1": {
+      "id": "dc-1",
+      "modelId": "INtIB0wp67cWgwXXjpsz",
+      "originId": "do-app-0",
+      "targetId": "do-app-5",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-2": {
+      "id": "dc-2",
+      "modelId": "JbQRhNPqseEeppqLPwPX",
+      "originId": "do-app-1",
+      "targetId": "do-app-4",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-3": {
+      "id": "dc-3",
+      "modelId": "TRnNi7bwsETgsSLFIDq5",
+      "originId": "do-app-4",
+      "targetId": "do-app-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-4": {
+      "id": "dc-4",
+      "modelId": "UYAc8k7u6Mew2pl2g5cu",
+      "originId": "do-app-4",
+      "targetId": "do-app-3",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-5": {
+      "id": "dc-5",
+      "modelId": "yo8hpg9nITVnMKw9eSQp",
+      "originId": "do-app-3",
+      "targetId": "do-app-2",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-6": {
+      "id": "dc-6",
+      "modelId": "zh0v7S3B7n8TsxOxMOky",
+      "originId": "do-app-3",
+      "targetId": "do-app-5",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    }
+  },
+  "comments": {}
+}

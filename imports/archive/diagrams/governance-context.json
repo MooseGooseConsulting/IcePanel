@@ -1,0 +1,167 @@
+﻿{
+    "handleId":  "governance-context",
+    "type":  "context-diagram",
+    "connections":  {
+                        "dc-1":  {
+                                     "targetId":  "do-ext-1",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-1",
+                                     "lineShape":  "curved",
+                                     "modelId":  "PgIFonrF0ZcaJsZGdM7X",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-0"
+                                 },
+                        "dc-3":  {
+                                     "targetId":  "do-sys-2",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-3",
+                                     "lineShape":  "curved",
+                                     "modelId":  "l9wzJnFG9y4qdWUpq0L7",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-1"
+                                 },
+                        "dc-0":  {
+                                     "targetId":  "do-sys-1",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-0",
+                                     "lineShape":  "curved",
+                                     "modelId":  "Ox8pWO1gCZPFpyCdAqTu",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-1"
+                                 },
+                        "dc-2":  {
+                                     "targetId":  "do-ext-2",
+                                     "originConnector":  "right-middle",
+                                     "id":  "dc-2",
+                                     "lineShape":  "curved",
+                                     "modelId":  "aH1OPWb6c6CsbMKLxRXl",
+                                     "points":  [
+
+                                                ],
+                                     "labelPosition":  0.5,
+                                     "targetConnector":  "left-middle",
+                                     "originId":  "do-ext-0"
+                                 }
+                    },
+    "modelId":  "5bBm9AuMX6Le5Bx21W1H",
+    "name":  "governance - Context",
+    "index":  0,
+    "comments":  {
+
+                 },
+    "objects":  {
+                    "do-ext-4":  {
+                                     "id":  "do-ext-4",
+                                     "y":  720,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "jI8N9vgO0VCFji7NeRpV"
+                                 },
+                    "do-0":  {
+                                 "id":  "do-0",
+                                 "y":  80,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "G8gpnxzsDWYiWmpacrDD"
+                             },
+                    "do-sys-2":  {
+                                     "id":  "do-sys-2",
+                                     "y":  400,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "WVgLLBLN8zOaXFhfW8rK"
+                                 },
+                    "do-ext-3":  {
+                                     "id":  "do-ext-3",
+                                     "y":  560,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "bBCVIplVPN4gqPFqUgYo"
+                                 },
+                    "do-ext-2":  {
+                                     "id":  "do-ext-2",
+                                     "y":  400,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "ZfEX60Us3D6XLeBADymd"
+                                 },
+                    "do-1":  {
+                                 "id":  "do-1",
+                                 "y":  240,
+                                 "shape":  "box",
+                                 "width":  200,
+                                 "type":  "actor",
+                                 "height":  100,
+                                 "x":  80,
+                                 "modelId":  "fy0zkeTKEoe1Kw6IcYc7"
+                             },
+                    "do-sys-1":  {
+                                     "id":  "do-sys-1",
+                                     "y":  240,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "L6mXhjVOwos5Prvvd2hx"
+                                 },
+                    "do-ext-1":  {
+                                     "id":  "do-ext-1",
+                                     "y":  240,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "MfOjEkBEZ0ulfa9WyuZy"
+                                 },
+                    "do-sys-0":  {
+                                     "id":  "do-sys-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  400,
+                                     "modelId":  "DPfUA99u9G19DQWq6Uz3"
+                                 },
+                    "do-ext-0":  {
+                                     "id":  "do-ext-0",
+                                     "y":  80,
+                                     "shape":  "box",
+                                     "width":  280,
+                                     "type":  "system",
+                                     "height":  120,
+                                     "x":  720,
+                                     "modelId":  "Jp5z2ptaCCxVj0xx8uP2"
+                                 }
+                },
+    "pinned":  true
+}

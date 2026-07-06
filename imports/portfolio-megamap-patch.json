@@ -1,0 +1,364 @@
+{
+  "tagGroups": [
+    { "icon": "robot", "id": "tg-zone", "name": "Zone" }
+  ],
+  "tags": [
+    { "color": "purple", "groupId": "tg-zone", "id": "tag-ai-review", "name": "AI-PR-Review" },
+    { "color": "beaver", "groupId": "tg-zone", "id": "tag-byok", "name": "BYOK" }
+  ],
+  "modelObjects": [
+    {
+      "id": "pf-group-homelab",
+      "name": "Homelab and Inference",
+      "type": "group",
+      "parentId": "portfolio-dom",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-platform"],
+      "description": "Proxmox host substrate, Talos Kubernetes, and the EVO-X2 Qwen 3.6 sidecar on VLAN 30.",
+      "caption": "host + k8s + qwen"
+    },
+    {
+      "id": "pf-group-governance",
+      "name": "PR Review and Governance",
+      "type": "group",
+      "parentId": "portfolio-dom",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-governance"],
+      "description": "Advisory PR reviewers, learning corpus, and the planned runner-native BYOK review stack.",
+      "caption": "review agents"
+    },
+    {
+      "id": "pf-group-data",
+      "name": "Search Archive and Learning",
+      "type": "group",
+      "parentId": "portfolio-dom",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-search", "tag-archive", "tag-learning"],
+      "description": "ColdSearch runtime, LLM archiver, and agent learning corpus.",
+      "caption": "data plane"
+    },
+    {
+      "id": "pf-sys-aireview",
+      "name": "AI PR Review Pipeline",
+      "type": "system",
+      "parentId": "portfolio-dom",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review", "tag-byok"],
+      "description": "Runner-native BYOK PR review stack: GitHub Actions debounce workflow, self-hosted runner on tailnet, OpenHands inline review, AI Review summary, LiteLLM gateway to Qwen 3.6. No SaaS reviewer subscription.",
+      "caption": "OpenHands + AI Review + LiteLLM",
+      "labels": { "workflow": "ai-pr-review.yml" }
+    },
+    {
+      "id": "pf-app-qwen-lxc",
+      "name": "Qwen 3.6 LXC Sidecar",
+      "type": "app",
+      "parentId": "portfolio-sys-homelab",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-live", "tag-platform", "tag-byok"],
+      "description": "llm-qwen36 on EVO-X2 (CTID 1201). llama.cpp on Mesa RADV/Vulkan. OpenAI-compatible API at 192.168.30.31:8080, model qwen36-35b-a3b-mtp, 262k context.",
+      "caption": "192.168.30.31:8080",
+      "labels": { "ip": "192.168.30.31", "port": "8080" }
+    },
+    {
+      "id": "pf-app-proxmox",
+      "name": "Proxmox VE 9 Host",
+      "type": "app",
+      "parentId": "portfolio-sys-homelab",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-live", "tag-platform"],
+      "description": "Host substrate on SER8 + EVO-X2, VLAN 30. Runs Talos worker VMs, HAOS, and the Qwen LXC sidecar.",
+      "caption": "pve host layer"
+    },
+    {
+      "id": "pf-app-talos",
+      "name": "Talos Kubernetes Cluster",
+      "type": "app",
+      "parentId": "portfolio-sys-homelab",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-live", "tag-platform"],
+      "description": "Declaratively managed via talhelper + Helmfile. Postgres CNPG, Garage S3, Cilium, observability stack.",
+      "caption": "k8s workloads"
+    },
+    {
+      "id": "pf-app-runner",
+      "name": "Self-Hosted GitHub Runner",
+      "type": "app",
+      "parentId": "pf-sys-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "Tailnet runner with labels self-hosted, ai-review, tailnet. Executes review workflow with full PR checkout.",
+      "caption": "ai-review runner"
+    },
+    {
+      "id": "pf-app-workflow",
+      "name": "AI PR Review Workflow",
+      "type": "app",
+      "parentId": "pf-sys-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "GitHub Actions .github/workflows/ai-pr-review.yml. pull_request_target, 600s debounce, stale SHA guard, concurrency cancel-in-progress.",
+      "caption": "debounced workflow"
+    },
+    {
+      "id": "pf-app-openhands",
+      "name": "OpenHands PR Review",
+      "type": "app",
+      "parentId": "pf-sys-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "Primary reviewer. OpenHands/extensions/plugins/pr-review. Inline comments, bash/repo access, custom llm-base-url.",
+      "caption": "primary inline reviewer"
+    },
+    {
+      "id": "pf-app-aireview",
+      "name": "AI Review (Nikita-Filonov)",
+      "type": "app",
+      "parentId": "pf-sys-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "Secondary summary reviewer. run-summary mode, OpenAI-compatible LLM config, posts context review to PR.",
+      "caption": "secondary summary"
+    },
+    {
+      "id": "pf-app-litellm",
+      "name": "LiteLLM Gateway",
+      "type": "app",
+      "parentId": "pf-sys-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-byok"],
+      "description": "OpenAI-compatible proxy. Model alias qwen-review routes to hosted_vllm/Qwen3.6-35B-A3B on tailnet.",
+      "caption": "qwen-review alias"
+    },
+    {
+      "id": "pf-store-review-policy",
+      "name": "AI Review Policy",
+      "type": "store",
+      "parentId": "pf-sys-aireview",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-governance"],
+      "description": "Repo-native .github/ai-review-policy.md shared by OpenHands and AI Review for house style and severity labels.",
+      "caption": ".github/ai-review-policy.md"
+    },
+    {
+      "id": "pf-app-coldsearch-cli",
+      "name": "ColdSearch CLI",
+      "type": "app",
+      "parentId": "portfolio-sys-search",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-live", "tag-search"],
+      "description": "Unified search/extract/crawl CLI with fanout, RRF reranking, and agent mode.",
+      "caption": "coldsearch binary"
+    },
+    {
+      "id": "pf-app-archiver-core",
+      "name": "LLM Archiver Ingestion",
+      "type": "app",
+      "parentId": "portfolio-sys-archive",
+      "status": "future",
+      "external": false,
+      "tagIds": ["tag-future", "tag-archive"],
+      "description": "Fleet-wide conversation capture, per-tool parsers, Postgres storage on homelab CNPG.",
+      "caption": "archiver v2"
+    },
+    {
+      "id": "pf-app-corpus-queue",
+      "name": "Learning Promotion Queue",
+      "type": "app",
+      "parentId": "portfolio-sys-corpus",
+      "status": "live",
+      "external": false,
+      "tagIds": ["tag-live", "tag-learning"],
+      "description": "Distills session transcripts into skills and ADRs for frozenSkillz and project repos.",
+      "caption": "promotion queue"
+    },
+    {
+      "id": "pf-ext-frozenskillz",
+      "name": "frozenSkillz",
+      "type": "system",
+      "parentId": "portfolio-dom",
+      "status": "live",
+      "external": true,
+      "tagIds": ["tag-live", "tag-learning"],
+      "description": "Published skills marketplace (github.com/Coldaine/frozenSkillz). Promotion target for cross-project agent procedures.",
+      "caption": "skills marketplace"
+    }
+  ],
+  "modelConnections": [
+    {
+      "id": "pf-conn-gh-workflow",
+      "name": "PR opened/synchronize/reopened/ready_for_review",
+      "direction": "outgoing",
+      "originId": "portfolio-sys-github",
+      "targetId": "pf-app-workflow",
+      "tagIds": ["tag-future", "tag-ai-review"],
+      "description": "pull_request_target triggers debounced AI PR review workflow."
+    },
+    {
+      "id": "pf-conn-workflow-runner",
+      "name": "runs on self-hosted runner",
+      "direction": "outgoing",
+      "originId": "pf-app-workflow",
+      "targetId": "pf-app-runner",
+      "tagIds": ["tag-future"],
+      "description": "Workflow jobs target runs-on self-hosted ai-review tailnet."
+    },
+    {
+      "id": "pf-conn-runner-openhands",
+      "name": "invokes primary inline review",
+      "direction": "outgoing",
+      "originId": "pf-app-runner",
+      "targetId": "pf-app-openhands",
+      "tagIds": ["tag-future"],
+      "description": "Full checkout then OpenHands PR review action."
+    },
+    {
+      "id": "pf-conn-runner-aireview",
+      "name": "invokes summary review",
+      "direction": "outgoing",
+      "originId": "pf-app-runner",
+      "targetId": "pf-app-aireview",
+      "tagIds": ["tag-future"],
+      "description": "AI Review run-summary after OpenHands."
+    },
+    {
+      "id": "pf-conn-openhands-litellm",
+      "name": "chat/completions via",
+      "direction": "outgoing",
+      "originId": "pf-app-openhands",
+      "targetId": "pf-app-litellm",
+      "tagIds": ["tag-future", "tag-byok"],
+      "description": "llm-model openai/qwen-review, llm-base-url from LITELLM_BASE_URL secret."
+    },
+    {
+      "id": "pf-conn-aireview-litellm",
+      "name": "OpenAI-compatible API via",
+      "direction": "outgoing",
+      "originId": "pf-app-aireview",
+      "targetId": "pf-app-litellm",
+      "tagIds": ["tag-future", "tag-byok"],
+      "description": "LLM__HTTP_CLIENT__API_URL points at LiteLLM gateway."
+    },
+    {
+      "id": "pf-conn-litellm-qwen",
+      "name": "hosted_vllm route to",
+      "direction": "outgoing",
+      "originId": "pf-app-litellm",
+      "targetId": "pf-app-qwen-lxc",
+      "tagIds": ["tag-live", "tag-byok"],
+      "description": "LiteLLM qwen-review alias to Qwen 3.6 sidecar over tailnet/VLAN 30."
+    },
+    {
+      "id": "pf-conn-openhands-gh",
+      "name": "posts inline PR comments",
+      "direction": "outgoing",
+      "originId": "pf-app-openhands",
+      "targetId": "portfolio-sys-github",
+      "tagIds": ["tag-future"],
+      "description": "Line-specific review comments on the PR."
+    },
+    {
+      "id": "pf-conn-aireview-gh",
+      "name": "posts summary review",
+      "direction": "outgoing",
+      "originId": "pf-app-aireview",
+      "targetId": "portfolio-sys-github",
+      "tagIds": ["tag-future"],
+      "description": "Second-opinion summary comment on the PR."
+    },
+    {
+      "id": "pf-conn-policy-openhands",
+      "name": "reads house style from",
+      "direction": "outgoing",
+      "originId": "pf-app-openhands",
+      "targetId": "pf-store-review-policy",
+      "tagIds": ["tag-future"],
+      "description": "Shared ai-review-policy.md for severity and output rules."
+    },
+    {
+      "id": "pf-conn-policy-aireview",
+      "name": "reads house style from",
+      "direction": "outgoing",
+      "originId": "pf-app-aireview",
+      "targetId": "pf-store-review-policy",
+      "tagIds": ["tag-future"],
+      "description": "Same policy file as OpenHands."
+    },
+    {
+      "id": "pf-conn-proxmox-qwen",
+      "name": "runs llm-qwen36 LXC",
+      "direction": "outgoing",
+      "originId": "pf-app-proxmox",
+      "targetId": "pf-app-qwen-lxc",
+      "tagIds": ["tag-live"],
+      "description": "CTID 1201 on pve-evo-x2."
+    },
+    {
+      "id": "pf-conn-talos-proxmox",
+      "name": "worker VMs on",
+      "direction": "outgoing",
+      "originId": "pf-app-talos",
+      "targetId": "pf-app-proxmox",
+      "tagIds": ["tag-live"],
+      "description": "Talos VMs provisioned via OpenTofu on Proxmox."
+    },
+    {
+      "id": "pf-conn-runner-homelab",
+      "name": "runner executes on",
+      "direction": "outgoing",
+      "originId": "pf-app-runner",
+      "targetId": "portfolio-sys-homelab",
+      "tagIds": ["tag-future"],
+      "description": "Self-hosted runner lives on tailnet homelab host."
+    },
+    {
+      "id": "pf-conn-qwen-coldsearch",
+      "name": "internal LLM endpoint for",
+      "direction": "outgoing",
+      "originId": "pf-app-qwen-lxc",
+      "targetId": "pf-app-coldsearch-cli",
+      "tagIds": ["tag-live"],
+      "description": "ColdSearch agent mode can call internal Qwen OpenAI-compatible endpoint."
+    },
+    {
+      "id": "pf-conn-corpus-frozen",
+      "name": "promotes skills to",
+      "direction": "outgoing",
+      "originId": "pf-app-corpus-queue",
+      "targetId": "pf-ext-frozenskillz",
+      "tagIds": ["tag-live"],
+      "description": "Approved procedures publish to frozenSkillz marketplace."
+    },
+    {
+      "id": "pf-conn-guardian-workflow",
+      "name": "parallel advisory path",
+      "direction": "outgoing",
+      "originId": "portfolio-sys-github",
+      "targetId": "portfolio-app-guardian",
+      "tagIds": ["tag-live"],
+      "description": "Guardian runs alongside BYOK review stack on same PR events."
+    },
+    {
+      "id": "pf-conn-aireview-guardian",
+      "name": "complements advisory review",
+      "direction": "outgoing",
+      "originId": "pf-app-openhands",
+      "targetId": "portfolio-app-guardian",
+      "tagIds": ["tag-future"],
+      "description": "OpenHands code review complements Guardian North Star interview."
+    }
+  ]
+}

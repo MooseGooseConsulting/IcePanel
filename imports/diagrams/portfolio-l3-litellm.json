@@ -1,0 +1,33 @@
+{
+  "name": "LiteLLM Gateway - Components (L3)",
+  "handleId": "portfolio-l3-litellm",
+  "type": "component-diagram",
+  "modelId": "zBsSgLaXIh5Dx0Atsd8L",
+  "index": 12,
+  "pinned": false,
+  "description": "C4 Level 3: components inside LiteLLM Gateway.",
+  "objects": {
+    "do-app": {
+      "id": "do-app",
+      "modelId": "zBsSgLaXIh5Dx0Atsd8L",
+      "type": "app",
+      "shape": "box",
+      "x": 80,
+      "y": 180,
+      "width": 240,
+      "height": 100
+    },
+    "do-comp-0": {
+      "id": "do-comp-0",
+      "modelId": "f8tzqt0FhVt615mcwlrn",
+      "type": "component",
+      "shape": "box",
+      "x": 380,
+      "y": 80,
+      "width": 240,
+      "height": 90
+    }
+  },
+  "connections": {},
+  "comments": {}
+}

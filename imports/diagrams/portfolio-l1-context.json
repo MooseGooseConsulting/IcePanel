@@ -1,0 +1,371 @@
+{
+  "name": "Portfolio - Context (L1)",
+  "handleId": "portfolio-l1-context",
+  "type": "context-diagram",
+  "modelId": "kpRaY0I26jePPy6lnsza",
+  "index": 0,
+  "pinned": true,
+  "description": "C4 Level 1: actors, portfolio systems, external systems. Drill into L2 app diagrams per system.",
+  "objects": {
+    "do-0": {
+      "id": "do-0",
+      "modelId": "TzxKu9jYZJyG9YQuYeEX",
+      "type": "actor",
+      "shape": "box",
+      "x": 80,
+      "y": 80,
+      "width": 220,
+      "height": 100
+    },
+    "do-1": {
+      "id": "do-1",
+      "modelId": "wdEjC1pfpdliKPJa1SNa",
+      "type": "actor",
+      "shape": "box",
+      "x": 80,
+      "y": 220,
+      "width": 220,
+      "height": 100
+    },
+    "do-sys-0": {
+      "id": "do-sys-0",
+      "modelId": "TwpQ6c0P5EAziZyIKNTy",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 80,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-1": {
+      "id": "do-sys-1",
+      "modelId": "LR0pM5V6J5X3rDTxObwS",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 210,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-2": {
+      "id": "do-sys-2",
+      "modelId": "vfiraZL9zlC53x6saWT2",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 340,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-3": {
+      "id": "do-sys-3",
+      "modelId": "KSFOe5pCnNLC3pAlexNZ",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 470,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-4": {
+      "id": "do-sys-4",
+      "modelId": "CeIoHeGfqAf89BE2ombJ",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 600,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-5": {
+      "id": "do-sys-5",
+      "modelId": "sEQBYlNn4fn1sTXTOZ8B",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 730,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-6": {
+      "id": "do-sys-6",
+      "modelId": "aUCX6dpnsQEEsuivcbdn",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 860,
+      "width": 280,
+      "height": 120
+    },
+    "do-sys-7": {
+      "id": "do-sys-7",
+      "modelId": "vffQBjnrkEKDGFCgKJ3v",
+      "type": "system",
+      "shape": "box",
+      "x": 400,
+      "y": 990,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-0": {
+      "id": "do-ext-0",
+      "modelId": "5wBngeCOekozxQaNKbCN",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 80,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-1": {
+      "id": "do-ext-1",
+      "modelId": "lc5wm71XbLTKBMIlhGSL",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 190,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-2": {
+      "id": "do-ext-2",
+      "modelId": "QzeK7d4BvVgeSTkvrqc0",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 300,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-3": {
+      "id": "do-ext-3",
+      "modelId": "a4Ye2RduBbuSKocU0y93",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 410,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-4": {
+      "id": "do-ext-4",
+      "modelId": "fBRxx9piJNoWhecTVSqp",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 520,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-5": {
+      "id": "do-ext-5",
+      "modelId": "aZaKxiYMZ6Q3blofRMsh",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 630,
+      "width": 280,
+      "height": 120
+    },
+    "do-ext-6": {
+      "id": "do-ext-6",
+      "modelId": "00g87kidVb2u2UCX6D8E",
+      "type": "system",
+      "shape": "box",
+      "x": 780,
+      "y": 740,
+      "width": 280,
+      "height": 120
+    }
+  },
+  "connections": {
+    "dc-0": {
+      "id": "dc-0",
+      "modelId": "7BXDcsMku69PjSPmZLAg",
+      "originId": "do-sys-7",
+      "targetId": "do-ext-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-1": {
+      "id": "dc-1",
+      "modelId": "7ftAqRsEilSlu0XsSw4L",
+      "originId": "do-sys-4",
+      "targetId": "do-sys-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-2": {
+      "id": "dc-2",
+      "modelId": "8OiiUUiMRCt9jguKHnw5",
+      "originId": "do-1",
+      "targetId": "do-sys-3",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-3": {
+      "id": "dc-3",
+      "modelId": "9zQVQHnBKdCm3vgTO9f6",
+      "originId": "do-sys-4",
+      "targetId": "do-sys-5",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-4": {
+      "id": "dc-4",
+      "modelId": "HtHLBkyldYaa8DRUnEcr",
+      "originId": "do-sys-3",
+      "targetId": "do-ext-4",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-5": {
+      "id": "dc-5",
+      "modelId": "IZmOr8PxFBNUSCJzisnh",
+      "originId": "do-ext-1",
+      "targetId": "do-sys-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-6": {
+      "id": "dc-6",
+      "modelId": "JybY6c811MpoSWX2txe7",
+      "originId": "do-1",
+      "targetId": "do-ext-3",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-7": {
+      "id": "dc-7",
+      "modelId": "RkqJFT29pFw7OG06Djl4",
+      "originId": "do-0",
+      "targetId": "do-1",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-8": {
+      "id": "dc-8",
+      "modelId": "SabS7KqBbRZYerWasy3a",
+      "originId": "do-0",
+      "targetId": "do-sys-5",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-9": {
+      "id": "dc-9",
+      "modelId": "TJ7YvaqKRTDDnEtG8DZf",
+      "originId": "do-0",
+      "targetId": "do-sys-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-10": {
+      "id": "dc-10",
+      "modelId": "aCefrEUYZQoDTeMKDvUQ",
+      "originId": "do-sys-0",
+      "targetId": "do-1",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-11": {
+      "id": "dc-11",
+      "modelId": "cT58ZG289TU8CndyS7B1",
+      "originId": "do-ext-2",
+      "targetId": "do-sys-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-12": {
+      "id": "dc-12",
+      "modelId": "d71BSYOypDi6O9Rovw9e",
+      "originId": "do-sys-5",
+      "targetId": "do-1",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-13": {
+      "id": "dc-13",
+      "modelId": "fCUChY6mPGNHuZXCIHtc",
+      "originId": "do-sys-3",
+      "targetId": "do-ext-1",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-14": {
+      "id": "dc-14",
+      "modelId": "mRBxYiPyJ845P57qt8po",
+      "originId": "do-sys-6",
+      "targetId": "do-sys-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-15": {
+      "id": "dc-15",
+      "modelId": "qa4lVvrjBLdOPT3IVEV0",
+      "originId": "do-1",
+      "targetId": "do-sys-4",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-16": {
+      "id": "dc-16",
+      "modelId": "x9IMbznnd72I08H7ZjFX",
+      "originId": "do-sys-0",
+      "targetId": "do-ext-2",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    }
+  },
+  "comments": {}
+}

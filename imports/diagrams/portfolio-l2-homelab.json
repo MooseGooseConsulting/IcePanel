@@ -1,0 +1,76 @@
+{
+  "name": "Homelab Platform - Containers (L2)",
+  "handleId": "portfolio-l2-homelab",
+  "type": "app-diagram",
+  "modelId": "TwpQ6c0P5EAziZyIKNTy",
+  "index": 1,
+  "pinned": false,
+  "description": "C4 Level 2: apps and stores inside Homelab Platform.",
+  "objects": {
+    "do-sys": {
+      "id": "do-sys",
+      "modelId": "TwpQ6c0P5EAziZyIKNTy",
+      "type": "system",
+      "shape": "box",
+      "x": 80,
+      "y": 200,
+      "width": 280,
+      "height": 120
+    },
+    "do-app-0": {
+      "id": "do-app-0",
+      "modelId": "MpRhQjqByiLr5YceVarb",
+      "type": "app",
+      "shape": "box",
+      "x": 420,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-1": {
+      "id": "do-app-1",
+      "modelId": "QdPtEM2FRZrcqF8JD38L",
+      "type": "app",
+      "shape": "box",
+      "x": 680,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    },
+    "do-app-2": {
+      "id": "do-app-2",
+      "modelId": "xWsoNAvV3Dm7zRTTJCqX",
+      "type": "app",
+      "shape": "box",
+      "x": 940,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    }
+  },
+  "connections": {
+    "dc-0": {
+      "id": "dc-0",
+      "modelId": "SCGLpCjKAi8cOuXlPhBE",
+      "originId": "do-app-1",
+      "targetId": "do-app-2",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    },
+    "dc-1": {
+      "id": "dc-1",
+      "modelId": "n6WkBGNPWRtngx5e7tc6",
+      "originId": "do-app-2",
+      "targetId": "do-app-0",
+      "lineShape": "square",
+      "originConnector": "right-middle",
+      "targetConnector": "left-middle",
+      "labelPosition": 0.5,
+      "points": []
+    }
+  },
+  "comments": {}
+}

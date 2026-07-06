@@ -1,0 +1,33 @@
+{
+  "name": "ColdSearch - Containers (L2)",
+  "handleId": "portfolio-l2-coldsearch",
+  "type": "app-diagram",
+  "modelId": "KSFOe5pCnNLC3pAlexNZ",
+  "index": 4,
+  "pinned": false,
+  "description": "C4 Level 2: apps and stores inside ColdSearch.",
+  "objects": {
+    "do-sys": {
+      "id": "do-sys",
+      "modelId": "KSFOe5pCnNLC3pAlexNZ",
+      "type": "system",
+      "shape": "box",
+      "x": 80,
+      "y": 200,
+      "width": 280,
+      "height": 120
+    },
+    "do-app-0": {
+      "id": "do-app-0",
+      "modelId": "AZ2PK56G0IweXTRsVzd8",
+      "type": "app",
+      "shape": "box",
+      "x": 420,
+      "y": 80,
+      "width": 240,
+      "height": 100
+    }
+  },
+  "connections": {},
+  "comments": {}
+}
